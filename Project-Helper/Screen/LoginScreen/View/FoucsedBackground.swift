@@ -96,9 +96,38 @@ struct FoucsedBackground: View {
     }
 }
 
+
+// MARK: - TEST
+fileprivate struct ForPreview: View {
+    @State var trigger = false
+    @State var isChanging = false
+    @State var showingText = "active"
+    
+    let fd = 0.5
+    let sd = 0.5
+    
+    var body: some View {
+        VStack {
+            Button(showingText) {
+                trigger.toggle()
+                isChanging = true
+                
+                Timer.scheduledTimer(withTimeInterval: fd+sd, repeats: false) { _ in
+                    isChanging = false
+                    showingText = trigger ? "inactive" : "active"
+                }
+            }
+            .disabled(isChanging)
+            
+            FoucsedBackground(active: $trigger, color: .red, lineWidth: 3.0, fd: fd, sd: sd)
+                .frame(width: 300, height: 100)
+        }
+    }
+}
+
 struct FoucsedBackground_Previews: PreviewProvider {
+
     static var previews: some View {
-        FoucsedBackground(active: .constant(true),color: .red, lineWidth: 3.0, fd: 1.0, sd: 1.0)
-            .frame(width: 300, height: 100)
+        ForPreview()
     }
 }
