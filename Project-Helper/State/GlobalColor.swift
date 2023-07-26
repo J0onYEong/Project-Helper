@@ -12,6 +12,7 @@ extension ShapeStyle where Self == Color {
     static var sunflower: Color {  hexToColor(hex: "#FFC312") }
     static var hotPink1: Color { hexToColor(hex: "#ff9ff3") }
     static var cloud: Color { hexToColor(hex: "#ecf0f1") }
+    static var softWarning: Color { hexToColor(hex: "#ff7979") }
     
     private static func hexToColor(hex: String) -> Color! {
         var cleanedHex = hex.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()

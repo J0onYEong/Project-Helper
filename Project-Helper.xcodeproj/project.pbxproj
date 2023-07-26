@@ -15,6 +15,7 @@
 		9B58839F2A6CFE6200A450B8 /* EnterEmailScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B58839E2A6CFE6200A450B8 /* EnterEmailScreen.swift */; };
 		9B864F7E2A6AE857002E7C31 /* LoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B864F7D2A6AE857002E7C31 /* LoginManager.swift */; };
 		9B88A3A32A6F74AB0061A182 /* GlobalColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B88A3A22A6F74AB0061A182 /* GlobalColor.swift */; };
+		9B88A3AC2A718B450061A182 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9B88A3AB2A718B450061A182 /* GoogleService-Info.plist */; };
 		9BEB53982A61777400444D37 /* Project_HelperApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BEB53972A61777400444D37 /* Project_HelperApp.swift */; };
 		9BEB539A2A61777400444D37 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BEB53992A61777400444D37 /* ContentView.swift */; };
 		9BEB539C2A61777600444D37 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9BEB539B2A61777600444D37 /* Assets.xcassets */; };
@@ -58,7 +59,7 @@
 		9B864F7D2A6AE857002E7C31 /* LoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginManager.swift; sourceTree = "<group>"; };
 		9B864F7F2A6AEDE0002E7C31 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		9B88A3A22A6F74AB0061A182 /* GlobalColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalColor.swift; sourceTree = "<group>"; };
-		9BA344472A6BBAF200E6BB8A /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		9B88A3AB2A718B450061A182 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9BEB53942A61777400444D37 /* Project-Helper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Project-Helper.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9BEB53972A61777400444D37 /* Project_HelperApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Project_HelperApp.swift; sourceTree = "<group>"; };
 		9BEB53992A61777400444D37 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -200,8 +201,8 @@
 		9BEB53962A61777400444D37 /* Project-Helper */ = {
 			isa = PBXGroup;
 			children = (
+				9B88A3AB2A718B450061A182 /* GoogleService-Info.plist */,
 				9B5883962A6CFD3200A450B8 /* Project-Helper.entitlements */,
-				9BA344472A6BBAF200E6BB8A /* GoogleService-Info.plist */,
 				9B864F7F2A6AEDE0002E7C31 /* Info.plist */,
 				9B88A3A12A6F747F0061A182 /* State */,
 				9B864F7C2A6AE83F002E7C31 /* Service */,
@@ -349,6 +350,7 @@
 			files = (
 				9BEB539F2A61777600444D37 /* Preview Assets.xcassets in Resources */,
 				9BEB539C2A61777600444D37 /* Assets.xcassets in Resources */,
+				9B88A3AC2A718B450061A182 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

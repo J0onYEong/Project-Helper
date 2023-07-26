@@ -8,8 +8,19 @@
 import SwiftUI
 
 struct EnterEmailScreen: View {
+    //input
     @State private var email = ""
     @State private var active = false
+    
+    //submit
+    @State private var scaleAmount = 1.0
+    private let targetScale = 1.05
+    @State private var warningString = ""
+    private let targetWarningString = "잘못된 이메일 형식입니다."
+    
+    //style
+    @State private var lineColor: Color = .sunflower
+    
     @FocusState private var focusState: Bool
     
     let bgColor: Color = .idleBackground
@@ -21,6 +32,7 @@ struct EnterEmailScreen: View {
         return !matches.isEmpty
     }
     
+    
     var body: some View {
         GeometryReader { geo in
             ZStack {
@@ -28,17 +40,37 @@ struct EnterEmailScreen: View {
                     .ignoresSafeArea()
                 
                 VStack {
-                    TextField("이메일을 입력하세요", text: $email) { active = $0 }
+                    TextField("이메일을 입력하세요", text: $email) { state in
+                        if state {
+                            active = true
+                        }
+                        
+                    }
                         .autocorrectionDisabled()
                         .textInputAutocapitalization(.never)
                         .keyboardType(.emailAddress)
                         .focused($focusState)
+                        .onSubmit {
+                            if !isEmailForm {
+                                validationFailureConf()
+                            } else {
+                                validationSuccessConf()
+                                
+                                LoginManager.shared.createEmailLink(email: email)
+                            }
+                        }
                         .padding(20)
                         .background(
-                            FoucsedBackground(active: $active, lineColor: .sunflower, backgroundOrg: bgColor, backgroundTar: .cloud, lineWidth: 4.0, fd: 0.4, sd: 0.2)
+                            FoucsedBackground(active: $active, lineColor: lineColor, backgroundOrg: bgColor, backgroundTar: .cloud, lineWidth: 4.0, fd: 0.4, sd: 0.2)
                         )
                         .padding(.horizontal, 20)
-                        
+                        .overlay {
+                            Text(warningString)
+                                .font(Font.system(size: 15, weight: .bold))
+                                .foregroundColor(.softWarning)
+                                .offset(CGSize(width: 0, height: -50))
+                                .scaleEffect(scaleAmount)
+                        }
                 }
             }
             .position(CGPoint(x: geo.size.width/2, y: geo.size.height/2))
@@ -46,6 +78,26 @@ struct EnterEmailScreen: View {
         .onAppear {
             focusState = true
         }
+    }
+    func validationFailureConf() {
+        lineColor = .softWarning
+        
+        warningString = targetWarningString
+        
+        withAnimation(.interpolatingSpring(stiffness: 10000, damping: 20)) {
+            scaleAmount = targetScale
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now()+0.1) {
+            scaleAmount = 1.0
+        }
+        
+        focusState = true
+    }
+    
+    func validationSuccessConf() {
+        lineColor = .sunflower
+        warningString = ""
     }
 }
 

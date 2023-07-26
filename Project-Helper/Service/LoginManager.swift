@@ -8,16 +8,26 @@
 import Foundation
 import FirebaseAuth
 
-
 struct LoginManager {
     
+    private init() { }
+    
+    static let shared = LoginManager()
 
-    func createEmailLink() {
+    func createEmailLink(email: String) {
         let actionCodeSettings = ActionCodeSettings()
-        actionCodeSettings.url = URL(string: "project-helper-426b0.firebaseapp.com")
+        actionCodeSettings.url = URL(string: "https://choijunyeong.page.link/login-with-email")
         // The sign-in operation has to always be completed in the app.
         actionCodeSettings.handleCodeInApp = true
         actionCodeSettings.setIOSBundleID(Bundle.main.bundleIdentifier!)
-        actionCodeSettings.setAndroidPackageName("com.example.android", installIfNotAvailable: false, minimumVersion: "12")
+        
+        Auth.auth().sendSignInLink(toEmail: email, actionCodeSettings: actionCodeSettings) { error in
+            if let error = error {
+                print(error.localizedDescription)
+                return
+            }
+            
+            UserDefaults.standard.set(email, forKey: "Email")
+        }
     }
 }
