@@ -7,16 +7,23 @@
 
 import SwiftUI
 import FirebaseCore
+import FirebaseDynamicLinks
 
 @main
 struct Project_HelperApp: App {
-    init() {
-        FirebaseApp.configure()
-    }
+    
+    @UIApplicationDelegateAdaptor(MyAppDelegate.self) var delegate
     
     var body: some Scene {
         WindowGroup {
             ContentView()
         }
+    }
+}
+
+class MyAppDelegate: NSObject, UIApplicationDelegate {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
+        FirebaseApp.configure()
+        return true
     }
 }

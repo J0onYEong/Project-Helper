@@ -14,7 +14,7 @@ struct EnterEmailScreen: View {
     
     //submit
     @State private var scaleAmount = 1.0
-    private let targetScale = 1.05
+    private let targetScale = 1.1
     @State private var warningString = ""
     private let targetWarningString = "잘못된 이메일 형식입니다."
     
@@ -73,11 +73,17 @@ struct EnterEmailScreen: View {
                         }
                 }
             }
-            .position(CGPoint(x: geo.size.width/2, y: geo.size.height/2))
+            .position(CGPoint(x: geo.size.width/2, y: geo.size.height/4))
         }
         .onAppear {
             focusState = true
         }
+        .ignoresSafeArea(.keyboard, edges: .bottom)
+        .onOpenURL { url in
+            LoginManager.shared.authenticationWithLink(link: url)
+        }
+        
+        
     }
     func validationFailureConf() {
         lineColor = .softWarning
