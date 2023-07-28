@@ -8,11 +8,17 @@
 import SwiftUI
 
 extension ShapeStyle where Self == Color {
-    static var idleBackground: Color { hexToColor(hex: "#34495e") }
-    static var sunflower: Color {  hexToColor(hex: "#FFC312") }
+    static var idleBackground: Color { hexToColor(hex: "#2f3640") }
+    static var sunflower: Color {  hexToColor(hex: "#f1c40f") }
     static var hotPink1: Color { hexToColor(hex: "#ff9ff3") }
+    static var heavyPink: Color { hexToColor(hex: "#f368e0") }
     static var cloud: Color { hexToColor(hex: "#ecf0f1") }
     static var softWarning: Color { hexToColor(hex: "#ff7979") }
+    static var placeHolder1: Color { hexToColor(hex: "#bdc3c7") }
+    static var waterBlue: Color { hexToColor(hex: "#a29bfe" )}
+    static var mintChocolate: Color { hexToColor(hex: "#1dd1a1") }
+    
+    static var prettyPurple: Color { hexToColor(hex: "#5f27cd") }
     
     private static func hexToColor(hex: String) -> Color! {
         var cleanedHex = hex.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()

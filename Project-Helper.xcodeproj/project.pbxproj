@@ -11,6 +11,8 @@
 		22B20017131319AACC5F4FCB /* libPods-Project-HelperUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 68B9F320BF54422207AD46C3 /* libPods-Project-HelperUITests.a */; };
 		9B09B3F82A6EBEF6002B4DA3 /* FoucsedBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B09B3F72A6EBEF6002B4DA3 /* FoucsedBackground.swift */; };
 		9B09B3FD2A6EDBB4002B4DA3 /* QuaterCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B09B3FC2A6EDBB4002B4DA3 /* QuaterCircle.swift */; };
+		9B30AA572A7369C200A8A1FD /* EmailScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B30AA562A7369C200A8A1FD /* EmailScreenController.swift */; };
+		9B30AA5C2A73715100A8A1FD /* FirstScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B30AA5B2A73715100A8A1FD /* FirstScreen.swift */; };
 		9B58839D2A6CFE4300A450B8 /* MainLoginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B58839C2A6CFE4300A450B8 /* MainLoginScreen.swift */; };
 		9B58839F2A6CFE6200A450B8 /* EnterEmailScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B58839E2A6CFE6200A450B8 /* EnterEmailScreen.swift */; };
 		9B864F7E2A6AE857002E7C31 /* LoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B864F7D2A6AE857002E7C31 /* LoginManager.swift */; };
@@ -53,6 +55,8 @@
 		8F1C6C3B322CDB39F57BAEE9 /* libPods-Project-HelperTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Project-HelperTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B09B3F72A6EBEF6002B4DA3 /* FoucsedBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoucsedBackground.swift; sourceTree = "<group>"; };
 		9B09B3FC2A6EDBB4002B4DA3 /* QuaterCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuaterCircle.swift; sourceTree = "<group>"; };
+		9B30AA562A7369C200A8A1FD /* EmailScreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailScreenController.swift; sourceTree = "<group>"; };
+		9B30AA5B2A73715100A8A1FD /* FirstScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstScreen.swift; sourceTree = "<group>"; };
 		9B5883962A6CFD3200A450B8 /* Project-Helper.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Project-Helper.entitlements"; sourceTree = "<group>"; };
 		9B58839C2A6CFE4300A450B8 /* MainLoginScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainLoginScreen.swift; sourceTree = "<group>"; };
 		9B58839E2A6CFE6200A450B8 /* EnterEmailScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterEmailScreen.swift; sourceTree = "<group>"; };
@@ -133,9 +137,42 @@
 			path = CustomShape;
 			sourceTree = "<group>";
 		};
+		9B30AA552A7369AB00A8A1FD /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				9B30AA562A7369C200A8A1FD /* EmailScreenController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		9B30AA582A73711F00A8A1FD /* FirstScreen */ = {
+			isa = PBXGroup;
+			children = (
+				9B30AA5A2A73712D00A8A1FD /* Controller */,
+				9B30AA592A73712800A8A1FD /* View */,
+				9B30AA5B2A73715100A8A1FD /* FirstScreen.swift */,
+			);
+			path = FirstScreen;
+			sourceTree = "<group>";
+		};
+		9B30AA592A73712800A8A1FD /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		9B30AA5A2A73712D00A8A1FD /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		9B5883972A6CFDCC00A450B8 /* Screen */ = {
 			isa = PBXGroup;
 			children = (
+				9B30AA582A73711F00A8A1FD /* FirstScreen */,
 				9B5883982A6CFDE900A450B8 /* LoginScreen */,
 			);
 			path = Screen;
@@ -144,6 +181,7 @@
 		9B5883982A6CFDE900A450B8 /* LoginScreen */ = {
 			isa = PBXGroup;
 			children = (
+				9B30AA552A7369AB00A8A1FD /* Controller */,
 				9B58839B2A6CFE0300A450B8 /* View */,
 				9B58839C2A6CFE4300A450B8 /* MainLoginScreen.swift */,
 				9B58839E2A6CFE6200A450B8 /* EnterEmailScreen.swift */,
@@ -463,7 +501,9 @@
 			files = (
 				9B58839F2A6CFE6200A450B8 /* EnterEmailScreen.swift in Sources */,
 				9BEB539A2A61777400444D37 /* ContentView.swift in Sources */,
+				9B30AA572A7369C200A8A1FD /* EmailScreenController.swift in Sources */,
 				9BEB53982A61777400444D37 /* Project_HelperApp.swift in Sources */,
+				9B30AA5C2A73715100A8A1FD /* FirstScreen.swift in Sources */,
 				9B09B3FD2A6EDBB4002B4DA3 /* QuaterCircle.swift in Sources */,
 				9B88A3A32A6F74AB0061A182 /* GlobalColor.swift in Sources */,
 				9B09B3F82A6EBEF6002B4DA3 /* FoucsedBackground.swift in Sources */,
