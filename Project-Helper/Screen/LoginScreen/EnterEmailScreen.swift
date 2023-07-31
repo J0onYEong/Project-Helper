@@ -8,21 +8,20 @@
 import SwiftUI
 
 struct EnterEmailScreen: View {
+    @Environment(\.dismiss) private var dismiss
     @ObservedObject private var controller = EmailScreenController()
-    
     @FocusState private var focusState: Bool
+    @State private var showAlert = false
     
     var body: some View {
-        GeometryReader { geo in
-            ZStack {
-                controller.bgColor
-                    .ignoresSafeArea()
-                
+        ZStack {
+            controller.bgColor
+                .ignoresSafeArea()
+            GeometryReader { geo in
                 VStack {
                     TextField("이메일을 입력하세요", text: $controller.email, onEditingChanged: controller.editingChange)
                         .autocorrectionDisabled()
                         .textInputAutocapitalization(.never)
-                        .keyboardType(.emailAddress)
                         .focused($focusState)
                         .onSubmit { if !controller.submit() { focusState = true } }
                         .padding(20)
@@ -37,16 +36,21 @@ struct EnterEmailScreen: View {
                                 .offset(CGSize(width: 0, height: -50))
                                 .scaleEffect(controller.submitVar.scaleAmount)
                         }
+                        .keyboardType(.emailAddress)
+                }
+                .position(CGPoint(x: geo.size.width/2, y: geo.size.height/4))
+            }
+            .onAppear { focusState = true }
+            .onOpenURL { controller.redirectionComplete(url: $0) }
+            .onChange(of: controller.error) { showAlert = $0 != nil ? true : showAlert }
+            .alert(controller.error?.description ?? "", isPresented: $showAlert) {
+                Button("닫기") {
+                    showAlert = false
+                    controller.error = nil
+                    dismiss()
                 }
             }
-            .position(CGPoint(x: geo.size.width/2, y: geo.size.height/4))
-        }
-        .onAppear {
-            focusState = true
-        }
-        .ignoresSafeArea(.keyboard, edges: .bottom)
-        .onOpenURL { url in
-            LoginManager.shared.authenticationWithLink(link: url)
+            .ignoresSafeArea(.keyboard, edges: .bottom)
         }
     }
 }

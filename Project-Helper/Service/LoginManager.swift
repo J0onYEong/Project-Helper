@@ -9,13 +9,24 @@ import Foundation
 import FirebaseAuth
 import FirebaseEmailAuthUI
 
-class LoginManager {
-    enum EmailLoginType {
-        case newSignIn
-        case addSignIn
-        case reSignIn
-    }
+enum EmailAuthError: Error {
+    case emailSedingError
+    case emailNotSaved
+    case emailAuthenticationFailed
     
+    var description: String {
+        switch(self) {
+        case .emailSedingError:
+            return "이메일 전송중 오류가 발생했습니다."
+        case .emailNotSaved:
+            return "로컬 저장소에 문제가 발생했습니다."
+        case .emailAuthenticationFailed:
+            return "이메일을 사용한 인증에 실패했습니다."
+        }
+    }
+}
+
+class LoginManager {
     
     private init() { }
     
@@ -23,7 +34,7 @@ class LoginManager {
     
     var currentUser: AuthDataResult?
 
-    func createEmailLink(email: String) {
+    func createEmailLink(email: String, completion: ((EmailAuthError) -> ())? = nil) {
         let actionCodeSettings = ActionCodeSettings()
         actionCodeSettings.url = URL(string: "https://choijunyeong.page.link/login-with-email")
         // The sign-in operation has to always be completed in the app.
@@ -31,8 +42,8 @@ class LoginManager {
         actionCodeSettings.setIOSBundleID(Bundle.main.bundleIdentifier!)
         
         Auth.auth().sendSignInLink(toEmail: email, actionCodeSettings: actionCodeSettings) { error in
-            if let error = error {
-                print(error.localizedDescription)
+            if let _ = error {
+                completion?(EmailAuthError.emailSedingError)
                 return
             }
             
@@ -40,11 +51,11 @@ class LoginManager {
         }
     }
     
-    func authenticationWithLink(link: URL, signInType: EmailLoginType = .newSignIn) {
+    func authenticationWithLink(link: URL, signInType: EmailLoginType = .newSignIn, completion: ((EmailAuthError) -> ())? = nil) {
         let linkStr = link.absoluteString
         UserDefaults.standard.set(link, forKey: "Link")
         guard let email = UserDefaults.standard.string(forKey: "Email") else {
-            print("저장된 이메일이 없음")
+            completion?(EmailAuthError.emailNotSaved)
             return;
         }
         
@@ -52,15 +63,15 @@ class LoginManager {
             switch signInType {
             case .newSignIn:
                 Auth.auth().signIn(withEmail: email, link: linkStr) {[weak self] user, error in
-                    if let error = error {
-                        print(error.localizedDescription)
+                    if let _ = error {
+                        completion?(EmailAuthError.emailAuthenticationFailed)
                     }
                     self?.currentUser = user
                 }
             case .addSignIn:
                 let credential = EmailAuthProvider.credential(withEmail:email, link:linkStr)
                 Auth.auth().currentUser?.link(with: credential) { authData, error in
-                    if let error = error {
+                    if let _ = error {
                       // And error occurred during linking.
                       return
                     }
@@ -70,7 +81,7 @@ class LoginManager {
             case .reSignIn:
                 let credential = EmailAuthProvider.credential(withEmail:email, link:linkStr)
                 Auth.auth().currentUser?.reauthenticate(with: credential) { authData, error in
-                  if let error = error {
+                  if let _ = error {
                     // And error occurred during re-authentication.
                     return
                   }
@@ -78,5 +89,13 @@ class LoginManager {
                 }
             }
         }
+    }
+}
+
+extension LoginManager {
+    enum EmailLoginType {
+        case newSignIn
+        case addSignIn
+        case reSignIn
     }
 }

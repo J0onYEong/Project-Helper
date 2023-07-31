@@ -17,8 +17,9 @@ extension ShapeStyle where Self == Color {
     static var placeHolder1: Color { hexToColor(hex: "#bdc3c7") }
     static var waterBlue: Color { hexToColor(hex: "#a29bfe" )}
     static var mintChocolate: Color { hexToColor(hex: "#1dd1a1") }
-    
     static var prettyPurple: Color { hexToColor(hex: "#5f27cd") }
+    static var pastelRed: Color { hexToColor(hex: "#ff6b6b") }
+    static var skyblue1: Color { hexToColor(hex: "#48dbfb") }
     
     private static func hexToColor(hex: String) -> Color! {
         var cleanedHex = hex.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()

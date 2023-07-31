@@ -18,6 +18,8 @@ class EmailScreenController: ObservableObject {
     //TextFeild
     @Published var lineColor: Color = .sunflower
     
+    //Error
+    @Published var error: EmailAuthError? = nil
     
     
     //Screen Option
@@ -62,11 +64,14 @@ class EmailScreenController: ObservableObject {
         } else {
             validationSuccessConf()
             
-            LoginManager.shared.createEmailLink(email: email)
+            LoginManager.shared.createEmailLink(email: email) { self.error = $0 }
             return true
         }
     }
-
+    
+    func redirectionComplete(url: URL) {
+        LoginManager.shared.authenticationWithLink(link: url) { self.error = $0 }
+    }
 }
 
 extension EmailScreenController {
