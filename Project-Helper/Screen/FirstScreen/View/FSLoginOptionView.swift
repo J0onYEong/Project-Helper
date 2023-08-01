@@ -39,9 +39,11 @@ struct FSLoginOptionView: View {
         GeometryReader { geo in
             VStack(spacing: 0) {
                 Text("로그인 방식을 선택해 주세요")
-                    .font(Font.system(size: 20, weight: .bold))
+                    .font(.blackHansSans(20))
                     .foregroundColor(.white)
                     .padding(.bottom, 15)
+                    .scaleEffect(btnScale)
+                    .font(Font(CTFont(.menuItem, size: 30)))
                 
                 HStack {
                     Spacer()
@@ -80,6 +82,10 @@ struct FSLoginOptionView: View {
 
 struct FSLoginOptionView_Previews: PreviewProvider {
     static var previews: some View {
-        FSLoginOptionView()
+        ZStack {
+            Color.idleBackground
+                .ignoresSafeArea()
+            FSLoginOptionView()
+        }
     }
 }

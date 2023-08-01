@@ -15,8 +15,12 @@
 		9B30AA5C2A73715100A8A1FD /* FirstScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B30AA5B2A73715100A8A1FD /* FirstScreen.swift */; };
 		9B58839D2A6CFE4300A450B8 /* MainLoginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B58839C2A6CFE4300A450B8 /* MainLoginScreen.swift */; };
 		9B58839F2A6CFE6200A450B8 /* EnterEmailScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B58839E2A6CFE6200A450B8 /* EnterEmailScreen.swift */; };
+		9B6357372A794B9A00098F98 /* BlackHanSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9B6357362A794B9A00098F98 /* BlackHanSans-Regular.ttf */; };
+		9B63573B2A794BB000098F98 /* Rowdies-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9B6357382A794BB000098F98 /* Rowdies-Bold.ttf */; };
+		9B63573C2A794BB000098F98 /* Rowdies-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9B6357392A794BB000098F98 /* Rowdies-Light.ttf */; };
+		9B63573D2A794BB000098F98 /* Rowdies-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9B63573A2A794BB000098F98 /* Rowdies-Regular.ttf */; };
 		9B864F7E2A6AE857002E7C31 /* LoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B864F7D2A6AE857002E7C31 /* LoginManager.swift */; };
-		9B88A3A32A6F74AB0061A182 /* GlobalColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B88A3A22A6F74AB0061A182 /* GlobalColor.swift */; };
+		9B88A3A32A6F74AB0061A182 /* GlobalExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B88A3A22A6F74AB0061A182 /* GlobalExtension.swift */; };
 		9B88A3AC2A718B450061A182 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9B88A3AB2A718B450061A182 /* GoogleService-Info.plist */; };
 		9BC5A52C2A780B8B008B7EAA /* FSTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC5A52B2A780B8B008B7EAA /* FSTitleView.swift */; };
 		9BC5A52E2A780DAC008B7EAA /* FSLoginOptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC5A52D2A780DAC008B7EAA /* FSLoginOptionView.swift */; };
@@ -62,9 +66,13 @@
 		9B5883962A6CFD3200A450B8 /* Project-Helper.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Project-Helper.entitlements"; sourceTree = "<group>"; };
 		9B58839C2A6CFE4300A450B8 /* MainLoginScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainLoginScreen.swift; sourceTree = "<group>"; };
 		9B58839E2A6CFE6200A450B8 /* EnterEmailScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterEmailScreen.swift; sourceTree = "<group>"; };
+		9B6357362A794B9A00098F98 /* BlackHanSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "BlackHanSans-Regular.ttf"; path = "../../../../../Documents/Font file/Black_Han_Sans/BlackHanSans-Regular.ttf"; sourceTree = "<group>"; };
+		9B6357382A794BB000098F98 /* Rowdies-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Rowdies-Bold.ttf"; path = "../../../../../Documents/Font file/Rowdies/Rowdies-Bold.ttf"; sourceTree = "<group>"; };
+		9B6357392A794BB000098F98 /* Rowdies-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Rowdies-Light.ttf"; path = "../../../../../Documents/Font file/Rowdies/Rowdies-Light.ttf"; sourceTree = "<group>"; };
+		9B63573A2A794BB000098F98 /* Rowdies-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Rowdies-Regular.ttf"; path = "../../../../../Documents/Font file/Rowdies/Rowdies-Regular.ttf"; sourceTree = "<group>"; };
 		9B864F7D2A6AE857002E7C31 /* LoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginManager.swift; sourceTree = "<group>"; };
 		9B864F7F2A6AEDE0002E7C31 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
-		9B88A3A22A6F74AB0061A182 /* GlobalColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalColor.swift; sourceTree = "<group>"; };
+		9B88A3A22A6F74AB0061A182 /* GlobalExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalExtension.swift; sourceTree = "<group>"; };
 		9B88A3AB2A718B450061A182 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9BC5A52B2A780B8B008B7EAA /* FSTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FSTitleView.swift; sourceTree = "<group>"; };
 		9BC5A52D2A780DAC008B7EAA /* FSLoginOptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FSLoginOptionView.swift; sourceTree = "<group>"; };
@@ -204,6 +212,17 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		9B6357352A794B7D00098F98 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				9B6357382A794BB000098F98 /* Rowdies-Bold.ttf */,
+				9B6357392A794BB000098F98 /* Rowdies-Light.ttf */,
+				9B63573A2A794BB000098F98 /* Rowdies-Regular.ttf */,
+				9B6357362A794B9A00098F98 /* BlackHanSans-Regular.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		9B864F7C2A6AE83F002E7C31 /* Service */ = {
 			isa = PBXGroup;
 			children = (
@@ -215,7 +234,7 @@
 		9B88A3A12A6F747F0061A182 /* State */ = {
 			isa = PBXGroup;
 			children = (
-				9B88A3A22A6F74AB0061A182 /* GlobalColor.swift */,
+				9B88A3A22A6F74AB0061A182 /* GlobalExtension.swift */,
 			);
 			path = State;
 			sourceTree = "<group>";
@@ -254,6 +273,7 @@
 				9BEB53972A61777400444D37 /* Project_HelperApp.swift */,
 				9BEB53992A61777400444D37 /* ContentView.swift */,
 				9BEB539B2A61777600444D37 /* Assets.xcassets */,
+				9B6357352A794B7D00098F98 /* Fonts */,
 				9BEB539D2A61777600444D37 /* Preview Content */,
 			);
 			path = "Project-Helper";
@@ -392,9 +412,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9B63573B2A794BB000098F98 /* Rowdies-Bold.ttf in Resources */,
+				9B63573D2A794BB000098F98 /* Rowdies-Regular.ttf in Resources */,
+				9B6357372A794B9A00098F98 /* BlackHanSans-Regular.ttf in Resources */,
 				9BEB539F2A61777600444D37 /* Preview Assets.xcassets in Resources */,
 				9BEB539C2A61777600444D37 /* Assets.xcassets in Resources */,
 				9B88A3AC2A718B450061A182 /* GoogleService-Info.plist in Resources */,
+				9B63573C2A794BB000098F98 /* Rowdies-Light.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -513,7 +537,7 @@
 				9BC5A52C2A780B8B008B7EAA /* FSTitleView.swift in Sources */,
 				9B30AA5C2A73715100A8A1FD /* FirstScreen.swift in Sources */,
 				9B09B3FD2A6EDBB4002B4DA3 /* QuaterCircle.swift in Sources */,
-				9B88A3A32A6F74AB0061A182 /* GlobalColor.swift in Sources */,
+				9B88A3A32A6F74AB0061A182 /* GlobalExtension.swift in Sources */,
 				9B09B3F82A6EBEF6002B4DA3 /* FoucsedBackground.swift in Sources */,
 				9B58839D2A6CFE4300A450B8 /* MainLoginScreen.swift in Sources */,
 				9B864F7E2A6AE857002E7C31 /* LoginManager.swift in Sources */,

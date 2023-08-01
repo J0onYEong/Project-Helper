@@ -1,5 +1,5 @@
 //
-//  GlobalColor.swift
+//  GlobalExtension.swift
 //  Project-Helper
 //
 //  Created by 최준영 on 2023/07/25.
@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+
+// MARK: - Color
 extension ShapeStyle where Self == Color {
     static var idleBackground: Color { hexToColor(hex: "#2f3640") }
     static var sunflower: Color {  hexToColor(hex: "#f1c40f") }
@@ -38,3 +40,25 @@ extension ShapeStyle where Self == Color {
     }
 }
 
+
+// MARK: - Font
+extension Font {
+    static func blackHansSans(_ size: CGFloat) -> Font {
+        .custom("BlackHanSans-Regular", size: size)
+    }
+    
+    enum CustomWeight {
+        case bold, light, regular
+    }
+    
+    static func rowdies(_ size: CGFloat, weight: CustomWeight) -> Font {
+        switch weight {
+        case .bold:
+            return .custom("Rowdies-Bold", size: size)
+        case .light:
+            return .custom("Rowdies-Light", size: size)
+        case .regular:
+            return .custom("Rowdies-Regular", size: size)
+        }
+    }
+}
