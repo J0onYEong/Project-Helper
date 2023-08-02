@@ -62,3 +62,14 @@ extension Font {
         }
     }
 }
+
+
+// MARK: - Text
+extension Text {
+    public func withGradient(gradient: LinearGradient) -> some View {
+        self.overlay {
+            gradient
+                .mask(self)
+        }
+    }
+}
