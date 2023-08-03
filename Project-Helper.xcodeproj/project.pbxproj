@@ -9,12 +9,11 @@
 /* Begin PBXBuildFile section */
 		0E709D03FC964B0EC8E95337 /* Pods_Project_Helper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3593913159301C8A4BAC1A02 /* Pods_Project_Helper.framework */; };
 		22B20017131319AACC5F4FCB /* libPods-Project-HelperUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 68B9F320BF54422207AD46C3 /* libPods-Project-HelperUITests.a */; };
-		9B09B3F82A6EBEF6002B4DA3 /* FoucsedBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B09B3F72A6EBEF6002B4DA3 /* FoucsedBackground.swift */; };
+		9B09B3F82A6EBEF6002B4DA3 /* FoucsedBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B09B3F72A6EBEF6002B4DA3 /* FoucsedBackgroundView.swift */; };
 		9B09B3FD2A6EDBB4002B4DA3 /* QuaterCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B09B3FC2A6EDBB4002B4DA3 /* QuaterCircle.swift */; };
 		9B30AA572A7369C200A8A1FD /* EmailScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B30AA562A7369C200A8A1FD /* EmailScreenController.swift */; };
 		9B30AA5C2A73715100A8A1FD /* FirstScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B30AA5B2A73715100A8A1FD /* FirstScreen.swift */; };
-		9B58839D2A6CFE4300A450B8 /* MainLoginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B58839C2A6CFE4300A450B8 /* MainLoginScreen.swift */; };
-		9B58839F2A6CFE6200A450B8 /* EnterEmailScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B58839E2A6CFE6200A450B8 /* EnterEmailScreen.swift */; };
+		9B58839F2A6CFE6200A450B8 /* EnterEmailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B58839E2A6CFE6200A450B8 /* EnterEmailView.swift */; };
 		9B6357372A794B9A00098F98 /* BlackHanSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9B6357362A794B9A00098F98 /* BlackHanSans-Regular.ttf */; };
 		9B63573B2A794BB000098F98 /* Rowdies-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9B6357382A794BB000098F98 /* Rowdies-Bold.ttf */; };
 		9B63573C2A794BB000098F98 /* Rowdies-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9B6357392A794BB000098F98 /* Rowdies-Light.ttf */; };
@@ -25,6 +24,7 @@
 		9BC5A52C2A780B8B008B7EAA /* FSTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC5A52B2A780B8B008B7EAA /* FSTitleView.swift */; };
 		9BC5A52E2A780DAC008B7EAA /* FSLoginOptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC5A52D2A780DAC008B7EAA /* FSLoginOptionView.swift */; };
 		9BD70AD62A7ABC4300CA1D6E /* GlobalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BD70AD52A7ABC4300CA1D6E /* GlobalView.swift */; };
+		9BE790B02A7C035800402974 /* GlobalProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE790AF2A7C035800402974 /* GlobalProtocol.swift */; };
 		9BEB53982A61777400444D37 /* Project_HelperApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BEB53972A61777400444D37 /* Project_HelperApp.swift */; };
 		9BEB539A2A61777400444D37 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BEB53992A61777400444D37 /* ContentView.swift */; };
 		9BEB539C2A61777600444D37 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9BEB539B2A61777600444D37 /* Assets.xcassets */; };
@@ -60,13 +60,12 @@
 		6D12BF9E070D271F80F83AF8 /* Pods-Project-Helper.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Project-Helper.debug.xcconfig"; path = "Target Support Files/Pods-Project-Helper/Pods-Project-Helper.debug.xcconfig"; sourceTree = "<group>"; };
 		8A1CB5D3039139C7CC4CED15 /* Pods-Project-HelperUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Project-HelperUITests.debug.xcconfig"; path = "Target Support Files/Pods-Project-HelperUITests/Pods-Project-HelperUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		8F1C6C3B322CDB39F57BAEE9 /* libPods-Project-HelperTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Project-HelperTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		9B09B3F72A6EBEF6002B4DA3 /* FoucsedBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoucsedBackground.swift; sourceTree = "<group>"; };
+		9B09B3F72A6EBEF6002B4DA3 /* FoucsedBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoucsedBackgroundView.swift; sourceTree = "<group>"; };
 		9B09B3FC2A6EDBB4002B4DA3 /* QuaterCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuaterCircle.swift; sourceTree = "<group>"; };
 		9B30AA562A7369C200A8A1FD /* EmailScreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailScreenController.swift; sourceTree = "<group>"; };
 		9B30AA5B2A73715100A8A1FD /* FirstScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstScreen.swift; sourceTree = "<group>"; };
 		9B5883962A6CFD3200A450B8 /* Project-Helper.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Project-Helper.entitlements"; sourceTree = "<group>"; };
-		9B58839C2A6CFE4300A450B8 /* MainLoginScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainLoginScreen.swift; sourceTree = "<group>"; };
-		9B58839E2A6CFE6200A450B8 /* EnterEmailScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterEmailScreen.swift; sourceTree = "<group>"; };
+		9B58839E2A6CFE6200A450B8 /* EnterEmailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterEmailView.swift; sourceTree = "<group>"; };
 		9B6357362A794B9A00098F98 /* BlackHanSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "BlackHanSans-Regular.ttf"; path = "../../../../../Documents/Font file/Black_Han_Sans/BlackHanSans-Regular.ttf"; sourceTree = "<group>"; };
 		9B6357382A794BB000098F98 /* Rowdies-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Rowdies-Bold.ttf"; path = "../../../../../Documents/Font file/Rowdies/Rowdies-Bold.ttf"; sourceTree = "<group>"; };
 		9B6357392A794BB000098F98 /* Rowdies-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Rowdies-Light.ttf"; path = "../../../../../Documents/Font file/Rowdies/Rowdies-Light.ttf"; sourceTree = "<group>"; };
@@ -78,6 +77,7 @@
 		9BC5A52B2A780B8B008B7EAA /* FSTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FSTitleView.swift; sourceTree = "<group>"; };
 		9BC5A52D2A780DAC008B7EAA /* FSLoginOptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FSLoginOptionView.swift; sourceTree = "<group>"; };
 		9BD70AD52A7ABC4300CA1D6E /* GlobalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalView.swift; sourceTree = "<group>"; };
+		9BE790AF2A7C035800402974 /* GlobalProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalProtocol.swift; sourceTree = "<group>"; };
 		9BEB53942A61777400444D37 /* Project-Helper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Project-Helper.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9BEB53972A61777400444D37 /* Project_HelperApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Project_HelperApp.swift; sourceTree = "<group>"; };
 		9BEB53992A61777400444D37 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -172,6 +172,7 @@
 		9B30AA592A73712800A8A1FD /* View */ = {
 			isa = PBXGroup;
 			children = (
+				9B5883982A6CFDE900A450B8 /* EmailLoginView */,
 				9BC5A52B2A780B8B008B7EAA /* FSTitleView.swift */,
 				9BC5A52D2A780DAC008B7EAA /* FSLoginOptionView.swift */,
 			);
@@ -189,29 +190,19 @@
 			isa = PBXGroup;
 			children = (
 				9B30AA582A73711F00A8A1FD /* FirstScreen */,
-				9B5883982A6CFDE900A450B8 /* LoginScreen */,
 			);
 			path = Screen;
 			sourceTree = "<group>";
 		};
-		9B5883982A6CFDE900A450B8 /* LoginScreen */ = {
-			isa = PBXGroup;
-			children = (
-				9B30AA552A7369AB00A8A1FD /* Controller */,
-				9B58839B2A6CFE0300A450B8 /* View */,
-				9B58839C2A6CFE4300A450B8 /* MainLoginScreen.swift */,
-				9B58839E2A6CFE6200A450B8 /* EnterEmailScreen.swift */,
-			);
-			path = LoginScreen;
-			sourceTree = "<group>";
-		};
-		9B58839B2A6CFE0300A450B8 /* View */ = {
+		9B5883982A6CFDE900A450B8 /* EmailLoginView */ = {
 			isa = PBXGroup;
 			children = (
 				9B09B3F92A6ED07E002B4DA3 /* CustomShape */,
-				9B09B3F72A6EBEF6002B4DA3 /* FoucsedBackground.swift */,
+				9B30AA552A7369AB00A8A1FD /* Controller */,
+				9B58839E2A6CFE6200A450B8 /* EnterEmailView.swift */,
+				9B09B3F72A6EBEF6002B4DA3 /* FoucsedBackgroundView.swift */,
 			);
-			path = View;
+			path = EmailLoginView;
 			sourceTree = "<group>";
 		};
 		9B6357352A794B7D00098F98 /* Fonts */ = {
@@ -238,6 +229,7 @@
 			children = (
 				9B88A3A22A6F74AB0061A182 /* GlobalExtension.swift */,
 				9BD70AD52A7ABC4300CA1D6E /* GlobalView.swift */,
+				9BE790AF2A7C035800402974 /* GlobalProtocol.swift */,
 			);
 			path = State;
 			sourceTree = "<group>";
@@ -532,8 +524,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9B58839F2A6CFE6200A450B8 /* EnterEmailScreen.swift in Sources */,
+				9B58839F2A6CFE6200A450B8 /* EnterEmailView.swift in Sources */,
 				9BEB539A2A61777400444D37 /* ContentView.swift in Sources */,
+				9BE790B02A7C035800402974 /* GlobalProtocol.swift in Sources */,
 				9B30AA572A7369C200A8A1FD /* EmailScreenController.swift in Sources */,
 				9BEB53982A61777400444D37 /* Project_HelperApp.swift in Sources */,
 				9BC5A52E2A780DAC008B7EAA /* FSLoginOptionView.swift in Sources */,
@@ -541,8 +534,7 @@
 				9B30AA5C2A73715100A8A1FD /* FirstScreen.swift in Sources */,
 				9B09B3FD2A6EDBB4002B4DA3 /* QuaterCircle.swift in Sources */,
 				9B88A3A32A6F74AB0061A182 /* GlobalExtension.swift in Sources */,
-				9B09B3F82A6EBEF6002B4DA3 /* FoucsedBackground.swift in Sources */,
-				9B58839D2A6CFE4300A450B8 /* MainLoginScreen.swift in Sources */,
+				9B09B3F82A6EBEF6002B4DA3 /* FoucsedBackgroundView.swift in Sources */,
 				9BD70AD62A7ABC4300CA1D6E /* GlobalView.swift in Sources */,
 				9B864F7E2A6AE857002E7C31 /* LoginManager.swift in Sources */,
 			);

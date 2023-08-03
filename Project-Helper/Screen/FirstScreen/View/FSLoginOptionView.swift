@@ -7,10 +7,10 @@
 
 import SwiftUI
 
-enum FSLoginOpState: CaseIterable, Identifiable, Hashable {
-    var id: UUID { UUID() }
-    
+enum FSLoginOpState: ViewState {
     case appear, disappear, clicked, congestion
+    
+    static var initialState: FSLoginOpState { .appear }
     
     var desciption: String {
         switch self {
@@ -41,7 +41,7 @@ enum FSLoginOpState: CaseIterable, Identifiable, Hashable {
 
 
 
-struct FSLoginOptionView: View {
+struct FSLoginOptionView: AnimatableView {
     
     @Binding var viewState: FSLoginOpState
     
@@ -118,13 +118,14 @@ extension FSLoginOptionView {
 }
 
 fileprivate struct TestView: View {
-    @State private var state: FSLoginOpState = .appear
+    @State private var state: FSLoginOpState = .initialState
     var body: some View {
         ZStack {
             Color.idleBackground
                 .ignoresSafeArea()
-            FSLoginOptionView(viewState: $state)
             
+            FSLoginOptionView(viewState: $state)
+
             VStack {
                 Spacer()
                 Spacer()

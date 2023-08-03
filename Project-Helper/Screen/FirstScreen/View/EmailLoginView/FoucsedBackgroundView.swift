@@ -1,5 +1,5 @@
 //
-//  FoucsedBackground.swift
+//  FoucsedBackgroundView.swift
 //  Project-Helper
 //
 //  Created by 최준영 on 2023/07/24.
@@ -48,14 +48,19 @@ fileprivate struct CircleForClipped: Shape {
 }
 
 
-fileprivate struct FoucsedBackgroundPart: View {
+enum FBPartViewState: ViewState {
+    case active, inactive, congestion
+    
+    static var initialState: FBPartViewState = .congestion
+}
+
+fileprivate struct FoucsedBackgroundPart: AnimatableView {
+    @Binding var viewState: FBPartViewState
+    
     @State private var degree = 0.0
     @State private var width = 0.0
     
-    
     var color: Color
-
-    var active = false
     
     var lineWidth: Double
     
@@ -82,8 +87,9 @@ fileprivate struct FoucsedBackgroundPart: View {
                     }
                 
             }
-            .onChange(of: active) { state in
-                if state {
+            .onChange(of: viewState) { state in
+                switch state {
+                case .active:
                     withAnimation(.linear(duration: fd)) {
                         width = rectWidth
                     }
@@ -91,7 +97,7 @@ fileprivate struct FoucsedBackgroundPart: View {
                     withAnimation(.linear(duration: sd).delay(fd)) {
                         degree = 90.0
                     }
-                } else {
+                case .inactive:
                     withAnimation(.linear(duration: sd)) {
                         degree = 0.0
                     }
@@ -99,15 +105,38 @@ fileprivate struct FoucsedBackgroundPart: View {
                     withAnimation(.linear(duration: fd).delay(sd)) {
                         width = 0.0
                     }
+                case .congestion:
+                    return
                 }
             }
         }
-        
     }
 }
 
-struct FoucsedBackground: View {
-    @Binding var active: Bool
+enum FoucsedBackgroundViewState: ViewState {
+    case active, inactive, congestion
+    
+    static var initialState: FoucsedBackgroundViewState { .congestion }
+    
+    var desciption: String {
+        switch self {
+        case .active:
+            return "active"
+        case .inactive:
+            return "inactive"
+        case .congestion:
+            return "congestion"
+        }
+    }
+}
+
+
+struct FoucsedBackgroundView: AnimatableView {
+    
+    @Binding var viewState: FoucsedBackgroundViewState
+    
+    @State private var fbpartViewState: FBPartViewState = .inactive
+    
     @State private var bgColor: Color = .clear
     
     var lineColor: Color
@@ -125,63 +154,67 @@ struct FoucsedBackground: View {
         ZStack {
             VStack(spacing: 0) {
                 HStack(spacing: 0) {
-                    FoucsedBackgroundPart(color: lineColor, active: active, lineWidth: lineWidth, fd: fd, sd: sd)
-                    FoucsedBackgroundPart(color: lineColor, active: active, lineWidth: lineWidth, fd: fd, sd: sd)
+                    FoucsedBackgroundPart(viewState: $fbpartViewState, color: lineColor, lineWidth: lineWidth, fd: fd, sd: sd)
+                    FoucsedBackgroundPart(viewState: $fbpartViewState, color: lineColor, lineWidth: lineWidth, fd: fd, sd: sd)
                         .rotation3DEffect(.degrees(180), axis: (x: 0, y: 1, z: 0))
                 }
                 HStack(spacing: 0) {
-                    FoucsedBackgroundPart(color: lineColor, active: active, lineWidth: lineWidth, fd: fd, sd: sd)
+                    FoucsedBackgroundPart(viewState: $fbpartViewState, color: lineColor, lineWidth: lineWidth, fd: fd, sd: sd)
                         .rotation3DEffect(.degrees(180), axis: (x: 1, y: 0, z: 0))
-                    FoucsedBackgroundPart(color: lineColor, active: active, lineWidth: lineWidth, fd: fd, sd: sd)
+                    FoucsedBackgroundPart(viewState: $fbpartViewState, color: lineColor, lineWidth: lineWidth, fd: fd, sd: sd)
                         .rotation3DEffect(.degrees(180), axis: (x: 0, y: 0, z: 1))
                 }
             }
             GeometryReader { geo in
                 RoundedRectangle(cornerRadius: geo.size.height/2)
                     .fill(bgColor)
-                    .onChange(of: active) { state in
+                    .onChange(of: viewState) { state in
                         withAnimation(.linear(duration: (fd+sd) * 0.65)) {
-                            bgColor = state ? backgroundTar : backgroundOrg
+                            bgColor = state == .active ? backgroundTar : backgroundOrg
                         }
                     }
             }
             .padding(lineWidth)
+        }
+        .onChange(of: viewState) { state in
+            switch state {
+            case .active:
+                fbpartViewState = .active
+            case .inactive:
+                fbpartViewState = .inactive
+            case .congestion:
+                fbpartViewState = .congestion
+                return
+            }
         }
     }
 }
 
 
 // MARK: - TEST
-fileprivate struct ForPreview: View {
-    @State var trigger = false
-    @State var isChanging = false
-    @State var showingText = "active"
-    
+fileprivate struct TestView: View {
+    @State private var state: FoucsedBackgroundViewState = .initialState
+        
     let fd = 0.5
     let sd = 0.5
-    
+        
     var body: some View {
-        VStack {
-            Button(showingText) {
-                trigger.toggle()
-                isChanging = true
-                
-                Timer.scheduledTimer(withTimeInterval: fd+sd, repeats: false) { _ in
-                    isChanging = false
-                    showingText = trigger ? "inactive" : "active"
-                }
-            }
-            .disabled(isChanging)
-            
-            FoucsedBackground(active: $trigger, lineColor: .red, backgroundTar: .cyan, lineWidth: 3.0, fd: fd, sd: sd)
+        ZStack {
+            FoucsedBackgroundView(viewState: $state, lineColor: .red, backgroundTar: .cyan, lineWidth: 3.0, fd: fd, sd: sd)
                 .frame(width: 300, height: 100)
+            VStack {
+                Spacer()
+                Spacer()
+                HStack { ForEach(FoucsedBackgroundViewState.allCases, id: \.self) { st in Button(st.desciption) { state = st } } }
+                Spacer()
+            }
         }
     }
 }
-
+    
 struct FoucsedBackground_Previews: PreviewProvider {
 
     static var previews: some View {
-        ForPreview()
+        TestView()
     }
 }

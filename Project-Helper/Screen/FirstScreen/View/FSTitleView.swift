@@ -7,10 +7,10 @@
 
 import SwiftUI
 
-enum FSTitleViewState: CaseIterable, Identifiable, Hashable {
-    var id: UUID { UUID() }
-    
+enum FSTitleViewState: ViewState {
     case idle, upward, disappear, congestion
+    
+    static var initialState: FSTitleViewState { .idle }
     
     var desciption: String {
         switch self {

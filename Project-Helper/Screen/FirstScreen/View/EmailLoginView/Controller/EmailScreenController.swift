@@ -1,5 +1,5 @@
 //
-//  EmailScreenController.swift
+//  EnterEmailViewController.swift
 //  Project-Helper
 //
 //  Created by 최준영 on 2023/07/28.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-class EmailScreenController: ObservableObject {
+class EnterEmailViewController: ObservableObject {
     //input
     @Published var email = ""
     @Published var activeAnim = false
@@ -74,7 +74,7 @@ class EmailScreenController: ObservableObject {
     }
 }
 
-extension EmailScreenController {
+extension EnterEmailViewController {
     struct SubmitVariation {
         var scaleAmount = 1.0
         var warningStr = ""

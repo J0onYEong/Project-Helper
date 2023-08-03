@@ -32,6 +32,7 @@ struct FirstScreen: View {
 
     @State private var titleViewState: FSTitleViewState = .congestion
     @State private var loginOptViewState: FSLoginOpState = .congestion
+    @State private var enterEmailViewState: EnterEmailViewState = .congestion
     
     var body: some View {
         ZStack {
@@ -41,6 +42,8 @@ struct FirstScreen: View {
             FSTitleView(viewState: $titleViewState)
             
             FSLoginOptionView(viewState: $loginOptViewState)
+            
+            EnterEmailView(viewState: $enterEmailViewState)
         }
         .onChange(of: screenState) { state in
             switch state {
@@ -64,6 +67,12 @@ extension FirstScreen {
     func take1() {
         loginOptViewState = .disappear
         titleViewState = .idle
+        
+        
+        enterEmailViewState = .inactive
+        Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false) { _ in
+            enterEmailViewState = .disappear
+        }
     }
     
     func take2() {
@@ -71,11 +80,23 @@ extension FirstScreen {
         Timer.scheduledTimer(withTimeInterval: FSTitleViewState.upward.animTime, repeats: false) { _ in
             loginOptViewState = .appear
         }
+        
+        
+        enterEmailViewState = .inactive
+        Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false) { _ in
+            enterEmailViewState = .disappear
+        }
     }
     
     func take3() {
         titleViewState = .disappear
         loginOptViewState = .disappear
+        
+        
+        enterEmailViewState = .appear
+        Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false) { _ in
+            enterEmailViewState = .active
+        }
     }
 }
 
