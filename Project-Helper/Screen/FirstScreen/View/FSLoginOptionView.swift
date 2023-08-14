@@ -8,9 +8,9 @@
 import SwiftUI
 
 enum FSLoginOpState: ViewState {
-    case appear, disappear, clicked, congestion
+    case appear, disappear, emailOptionClicked, congestion
     
-    static var initialState: FSLoginOpState { .appear }
+    static var initialState: FSLoginOpState { .congestion }
     
     var desciption: String {
         switch self {
@@ -18,8 +18,8 @@ enum FSLoginOpState: ViewState {
             return "appear"
         case .disappear:
             return "disappear"
-        case .clicked:
-            return "clicked"
+        case .emailOptionClicked:
+            return "emailOptionClicked"
         case .congestion:
             return "congestion"
         }
@@ -29,7 +29,7 @@ enum FSLoginOpState: ViewState {
         switch self {
         case .appear:
             return 0.1
-        case .clicked:
+        case .emailOptionClicked:
             return 0.2
         case .disappear:
             return 0.2
@@ -38,8 +38,6 @@ enum FSLoginOpState: ViewState {
         }
     }
 }
-
-
 
 struct FSLoginOptionView: AnimatableView {
     
@@ -60,9 +58,10 @@ struct FSLoginOptionView: AnimatableView {
                 HStack {
                     Spacer()
                     
+                    //Apple login btn
                     Button {
-                        viewState = .clicked
                         
+                        //미구현
                         
                     } label: {
                         ImageCircle(systemName: "apple.logo", lineColor: .sunflower)
@@ -72,10 +71,9 @@ struct FSLoginOptionView: AnimatableView {
                     Spacer()
                     Spacer()
                     
+                    //Email login btn
                     Button {
-                        viewState = .clicked
-                        
-                        
+                        viewState = .emailOptionClicked
                     } label: {
                         ImageCircle(systemName: "envelope.fill", lineColor: .sunflower)
                             .scaleEffect(btnScale)
@@ -92,7 +90,7 @@ struct FSLoginOptionView: AnimatableView {
             switch state {
             case .appear:
                 appearToScreen()
-            case .clicked:
+            case .emailOptionClicked:
                 disappearFromScreen()
             case .disappear:
                 disappearFromScreen()

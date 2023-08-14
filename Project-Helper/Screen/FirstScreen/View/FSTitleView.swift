@@ -10,7 +10,7 @@ import SwiftUI
 enum FSTitleViewState: ViewState {
     case idle, upward, disappear, congestion
     
-    static var initialState: FSTitleViewState { .idle }
+    static var initialState: FSTitleViewState { .congestion }
     
     var desciption: String {
         switch self {

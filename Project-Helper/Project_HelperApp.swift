@@ -16,7 +16,7 @@ struct Project_HelperApp: App {
     
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            MainScene()
         }
     }
 }

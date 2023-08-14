@@ -10,17 +10,21 @@ import SwiftUI
 class EnterEmailViewController: ObservableObject {
     //input
     @Published var email = ""
-    @Published var activeAnim = false
     
     //submit animation
-    @Published var submitVar = SubmitVariation()
+    @Published var wrongFormatNoti = WrongFormatNotification()
     
     //TextFeild
     @Published var lineColor: Color = .sunflower
     
+    //Delete Button
+    @Published var deleteBtnColor: Color = .sunflower
+    @Published var showingDeleteBtn = false
+    @Published var focusReqFromComtroller = false
+    
     //Error
     @Published var error: EmailAuthError? = nil
-    
+    @Published var showAlert = false
     
     //Screen Option
     private(set) var bgColor: Color = .idleBackground
@@ -32,29 +36,50 @@ class EnterEmailViewController: ObservableObject {
         return !matches.isEmpty
     }
     
+    //Reset State
+    func onDeleteBtnPressed() {
+        email = ""
+        focusReqFromComtroller = true
+        resetUIConfig()
+    }
+    
+    func resetUIConfig() {
+        lineColor = .sunflower
+        deleteBtnColor = .sunflower
+        showingDeleteBtn = false
+        
+        wrongFormatNoti.resetConfig()
+    }
+    
+    func resetAllConfig() {
+        email = ""
+        
+        resetUIConfig()
+        
+        error = nil
+        showAlert = false
+        
+        wrongFormatNoti.resetConfig()
+    }
+    
     func validationFailureConf() {
         lineColor = .softWarning
+        deleteBtnColor = .softWarning
         
-        submitVar.setToWrongEmail()
+        wrongFormatNoti.setToWrongEmail()
         
         withAnimation(.interpolatingSpring(stiffness: 10000, damping: 20)) {
-            submitVar.damping()
+            wrongFormatNoti.damping()
         }
         
         DispatchQueue.main.asyncAfter(deadline: .now()+0.1) {
-            self.submitVar.clearScale()
+            self.wrongFormatNoti.clearScale()
         }
     }
     
     func validationSuccessConf() {
         lineColor = .sunflower
-        submitVar.clearStr()
-    }
-    
-    func editingChange(state: Bool) {
-        if state {
-            activeAnim = true
-        }
+        wrongFormatNoti.clearText()
     }
     
     func submit() -> Bool {
@@ -68,34 +93,30 @@ class EnterEmailViewController: ObservableObject {
             return true
         }
     }
-    
-    func redirectionComplete(url: URL) {
-        LoginManager.shared.authenticationWithLink(link: url) { self.error = $0 }
-    }
 }
 
 extension EnterEmailViewController {
-    struct SubmitVariation {
+    struct WrongFormatNotification {
         var scaleAmount = 1.0
-        var warningStr = ""
+        private(set) var text = ""
         
         private let targetScaleAmount = 1.1
         private let targetWarningStr = "잘못된 이메일 형식입니다."
         
-        mutating func setToWrongEmail() {
-            warningStr = targetWarningStr
+        mutating func resetConfig() {
+            clearText()
+            clearScale()
         }
         
-        mutating func clearStr() {
-            warningStr = ""
+        mutating func setToWrongEmail() {
+            text = targetWarningStr
         }
         
         mutating func damping() {
             scaleAmount = targetScaleAmount
         }
         
-        mutating func clearScale() {
-            scaleAmount = 1.0
-        }
+        mutating func clearText() { text = "" }
+        mutating func clearScale() { scaleAmount = 1.0 }
     }
 }

@@ -11,6 +11,11 @@
 		22B20017131319AACC5F4FCB /* libPods-Project-HelperUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 68B9F320BF54422207AD46C3 /* libPods-Project-HelperUITests.a */; };
 		9B09B3F82A6EBEF6002B4DA3 /* FoucsedBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B09B3F72A6EBEF6002B4DA3 /* FoucsedBackgroundView.swift */; };
 		9B09B3FD2A6EDBB4002B4DA3 /* QuaterCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B09B3FC2A6EDBB4002B4DA3 /* QuaterCircle.swift */; };
+		9B228FDA2A81491600B22790 /*  MainScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B228FD92A81491600B22790 /*  MainScene.swift */; };
+		9B228FDE2A814C1500B22790 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B228FDD2A814C1500B22790 /* NavigationController.swift */; };
+		9B228FE02A814C8900B22790 /* MainSceneController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B228FDF2A814C8900B22790 /* MainSceneController.swift */; };
+		9B23C69C2A8A151B00CF1C45 /* FirstScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B23C69B2A8A151B00CF1C45 /* FirstScreenController.swift */; };
+		9B23C69E2A8A1FFF00CF1C45 /* EmailLoginWaitingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B23C69D2A8A1FFF00CF1C45 /* EmailLoginWaitingView.swift */; };
 		9B30AA572A7369C200A8A1FD /* EmailScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B30AA562A7369C200A8A1FD /* EmailScreenController.swift */; };
 		9B30AA5C2A73715100A8A1FD /* FirstScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B30AA5B2A73715100A8A1FD /* FirstScreen.swift */; };
 		9B58839F2A6CFE6200A450B8 /* EnterEmailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B58839E2A6CFE6200A450B8 /* EnterEmailView.swift */; };
@@ -26,7 +31,6 @@
 		9BD70AD62A7ABC4300CA1D6E /* GlobalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BD70AD52A7ABC4300CA1D6E /* GlobalView.swift */; };
 		9BE790B02A7C035800402974 /* GlobalProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE790AF2A7C035800402974 /* GlobalProtocol.swift */; };
 		9BEB53982A61777400444D37 /* Project_HelperApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BEB53972A61777400444D37 /* Project_HelperApp.swift */; };
-		9BEB539A2A61777400444D37 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BEB53992A61777400444D37 /* ContentView.swift */; };
 		9BEB539C2A61777600444D37 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9BEB539B2A61777600444D37 /* Assets.xcassets */; };
 		9BEB539F2A61777600444D37 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9BEB539E2A61777600444D37 /* Preview Assets.xcassets */; };
 		9BEB53A92A61777600444D37 /* Project_HelperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BEB53A82A61777600444D37 /* Project_HelperTests.swift */; };
@@ -62,6 +66,11 @@
 		8F1C6C3B322CDB39F57BAEE9 /* libPods-Project-HelperTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Project-HelperTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B09B3F72A6EBEF6002B4DA3 /* FoucsedBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoucsedBackgroundView.swift; sourceTree = "<group>"; };
 		9B09B3FC2A6EDBB4002B4DA3 /* QuaterCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuaterCircle.swift; sourceTree = "<group>"; };
+		9B228FD92A81491600B22790 /*  MainScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = " MainScene.swift"; sourceTree = "<group>"; };
+		9B228FDD2A814C1500B22790 /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
+		9B228FDF2A814C8900B22790 /* MainSceneController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSceneController.swift; sourceTree = "<group>"; };
+		9B23C69B2A8A151B00CF1C45 /* FirstScreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstScreenController.swift; sourceTree = "<group>"; };
+		9B23C69D2A8A1FFF00CF1C45 /* EmailLoginWaitingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailLoginWaitingView.swift; sourceTree = "<group>"; };
 		9B30AA562A7369C200A8A1FD /* EmailScreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailScreenController.swift; sourceTree = "<group>"; };
 		9B30AA5B2A73715100A8A1FD /* FirstScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstScreen.swift; sourceTree = "<group>"; };
 		9B5883962A6CFD3200A450B8 /* Project-Helper.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Project-Helper.entitlements"; sourceTree = "<group>"; };
@@ -80,7 +89,6 @@
 		9BE790AF2A7C035800402974 /* GlobalProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalProtocol.swift; sourceTree = "<group>"; };
 		9BEB53942A61777400444D37 /* Project-Helper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Project-Helper.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9BEB53972A61777400444D37 /* Project_HelperApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Project_HelperApp.swift; sourceTree = "<group>"; };
-		9BEB53992A61777400444D37 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		9BEB539B2A61777600444D37 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9BEB539E2A61777600444D37 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		9BEB53A42A61777600444D37 /* Project-HelperTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Project-HelperTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -151,6 +159,31 @@
 			path = CustomShape;
 			sourceTree = "<group>";
 		};
+		9B228FD82A8148F300B22790 /* Scene */ = {
+			isa = PBXGroup;
+			children = (
+				9B228FE12A814D4700B22790 /* MainScene */,
+			);
+			path = Scene;
+			sourceTree = "<group>";
+		};
+		9B228FDB2A814BF800B22790 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				9B228FDD2A814C1500B22790 /* NavigationController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		9B228FE12A814D4700B22790 /* MainScene */ = {
+			isa = PBXGroup;
+			children = (
+				9B228FD92A81491600B22790 /*  MainScene.swift */,
+				9B228FDF2A814C8900B22790 /* MainSceneController.swift */,
+			);
+			path = MainScene;
+			sourceTree = "<group>";
+		};
 		9B30AA552A7369AB00A8A1FD /* Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -162,8 +195,8 @@
 		9B30AA582A73711F00A8A1FD /* FirstScreen */ = {
 			isa = PBXGroup;
 			children = (
-				9B30AA5A2A73712D00A8A1FD /* Controller */,
 				9B30AA592A73712800A8A1FD /* View */,
+				9B30AA5A2A73712D00A8A1FD /* Controller */,
 				9B30AA5B2A73715100A8A1FD /* FirstScreen.swift */,
 			);
 			path = FirstScreen;
@@ -172,9 +205,10 @@
 		9B30AA592A73712800A8A1FD /* View */ = {
 			isa = PBXGroup;
 			children = (
-				9B5883982A6CFDE900A450B8 /* EmailLoginView */,
+				9B5883982A6CFDE900A450B8 /* EmailEnterView */,
 				9BC5A52B2A780B8B008B7EAA /* FSTitleView.swift */,
 				9BC5A52D2A780DAC008B7EAA /* FSLoginOptionView.swift */,
+				9B23C69D2A8A1FFF00CF1C45 /* EmailLoginWaitingView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -182,6 +216,7 @@
 		9B30AA5A2A73712D00A8A1FD /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				9B23C69B2A8A151B00CF1C45 /* FirstScreenController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -194,15 +229,15 @@
 			path = Screen;
 			sourceTree = "<group>";
 		};
-		9B5883982A6CFDE900A450B8 /* EmailLoginView */ = {
+		9B5883982A6CFDE900A450B8 /* EmailEnterView */ = {
 			isa = PBXGroup;
 			children = (
 				9B09B3F92A6ED07E002B4DA3 /* CustomShape */,
 				9B30AA552A7369AB00A8A1FD /* Controller */,
-				9B58839E2A6CFE6200A450B8 /* EnterEmailView.swift */,
 				9B09B3F72A6EBEF6002B4DA3 /* FoucsedBackgroundView.swift */,
+				9B58839E2A6CFE6200A450B8 /* EnterEmailView.swift */,
 			);
-			path = EmailLoginView;
+			path = EmailEnterView;
 			sourceTree = "<group>";
 		};
 		9B6357352A794B7D00098F98 /* Fonts */ = {
@@ -227,6 +262,7 @@
 		9B88A3A12A6F747F0061A182 /* State */ = {
 			isa = PBXGroup;
 			children = (
+				9B228FDB2A814BF800B22790 /* Controller */,
 				9B88A3A22A6F74AB0061A182 /* GlobalExtension.swift */,
 				9BD70AD52A7ABC4300CA1D6E /* GlobalView.swift */,
 				9BE790AF2A7C035800402974 /* GlobalProtocol.swift */,
@@ -265,8 +301,8 @@
 				9B88A3A12A6F747F0061A182 /* State */,
 				9B864F7C2A6AE83F002E7C31 /* Service */,
 				9B5883972A6CFDCC00A450B8 /* Screen */,
+				9B228FD82A8148F300B22790 /* Scene */,
 				9BEB53972A61777400444D37 /* Project_HelperApp.swift */,
-				9BEB53992A61777400444D37 /* ContentView.swift */,
 				9BEB539B2A61777600444D37 /* Assets.xcassets */,
 				9B6357352A794B7D00098F98 /* Fonts */,
 				9BEB539D2A61777600444D37 /* Preview Content */,
@@ -525,14 +561,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				9B58839F2A6CFE6200A450B8 /* EnterEmailView.swift in Sources */,
-				9BEB539A2A61777400444D37 /* ContentView.swift in Sources */,
 				9BE790B02A7C035800402974 /* GlobalProtocol.swift in Sources */,
+				9B23C69C2A8A151B00CF1C45 /* FirstScreenController.swift in Sources */,
 				9B30AA572A7369C200A8A1FD /* EmailScreenController.swift in Sources */,
+				9B228FDA2A81491600B22790 /*  MainScene.swift in Sources */,
 				9BEB53982A61777400444D37 /* Project_HelperApp.swift in Sources */,
 				9BC5A52E2A780DAC008B7EAA /* FSLoginOptionView.swift in Sources */,
+				9B228FDE2A814C1500B22790 /* NavigationController.swift in Sources */,
 				9BC5A52C2A780B8B008B7EAA /* FSTitleView.swift in Sources */,
 				9B30AA5C2A73715100A8A1FD /* FirstScreen.swift in Sources */,
 				9B09B3FD2A6EDBB4002B4DA3 /* QuaterCircle.swift in Sources */,
+				9B228FE02A814C8900B22790 /* MainSceneController.swift in Sources */,
+				9B23C69E2A8A1FFF00CF1C45 /* EmailLoginWaitingView.swift in Sources */,
 				9B88A3A32A6F74AB0061A182 /* GlobalExtension.swift in Sources */,
 				9B09B3F82A6EBEF6002B4DA3 /* FoucsedBackgroundView.swift in Sources */,
 				9BD70AD62A7ABC4300CA1D6E /* GlobalView.swift in Sources */,

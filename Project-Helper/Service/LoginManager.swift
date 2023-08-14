@@ -51,41 +51,39 @@ class LoginManager {
         }
     }
     
-    func authenticationWithLink(link: URL, signInType: EmailLoginType = .newSignIn, completion: ((EmailAuthError) -> ())? = nil) {
+    func authenticationWithLink(link: URL, signInType: EmailLoginType = .newSignIn, completion: ((Result<AuthDataResult, EmailAuthError>) -> ())? = nil) {
         let linkStr = link.absoluteString
         UserDefaults.standard.set(link, forKey: "Link")
         guard let email = UserDefaults.standard.string(forKey: "Email") else {
-            completion?(EmailAuthError.emailNotSaved)
+            completion?(.failure(.emailNotSaved))
             return;
         }
         
         if Auth.auth().isSignIn(withEmailLink: linkStr) {
             switch signInType {
             case .newSignIn:
-                Auth.auth().signIn(withEmail: email, link: linkStr) {[weak self] user, error in
-                    if let _ = error {
-                        completion?(EmailAuthError.emailAuthenticationFailed)
-                    }
-                    self?.currentUser = user
+                Auth.auth().signIn(withEmail: email, link: linkStr) { authData, error in
+                    if let _ = error { completion?(.failure(.emailAuthenticationFailed)); return }
+                    
+                    if let unwrappedAuthData = authData { completion?(.success(unwrappedAuthData)) }
                 }
             case .addSignIn:
                 let credential = EmailAuthProvider.credential(withEmail:email, link:linkStr)
                 Auth.auth().currentUser?.link(with: credential) { authData, error in
-                    if let _ = error {
-                      // And error occurred during linking.
-                      return
-                    }
+                    if let _ = error { completion?(.failure(.emailAuthenticationFailed)); return }
+                    
                     // The provider was successfully linked.
                     // The phone user can now sign in with their phone number or email.
+                    if let unwrappedAuthData = authData { completion?(.success(unwrappedAuthData)) }
+                    
                 }
             case .reSignIn:
                 let credential = EmailAuthProvider.credential(withEmail:email, link:linkStr)
                 Auth.auth().currentUser?.reauthenticate(with: credential) { authData, error in
-                  if let _ = error {
-                    // And error occurred during re-authentication.
-                    return
-                  }
-                  // The user was successfully re-authenticated.
+                    if let _ = error { completion?(.failure(.emailAuthenticationFailed)); return }
+                    
+                    // The user was successfully re-authenticated.
+                    if let unwrappedAuthData = authData { completion?(.success(unwrappedAuthData)) }
                 }
             }
         }

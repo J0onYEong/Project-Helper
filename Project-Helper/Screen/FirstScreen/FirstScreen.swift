@@ -7,10 +7,12 @@
 
 import SwiftUI
 
-enum FirstScreenState: CaseIterable, Identifiable, Hashable {
+enum FirstScreenState: ViewState, Equatable {
+    static var initialState: FirstScreenState = .congestion
+    
     var id: UUID { UUID() }
     
-    case take1, take2, take3, congestion
+    case take1, take2, take3, take4, congestion
     
     var desciption: String {
         switch self {
@@ -20,6 +22,8 @@ enum FirstScreenState: CaseIterable, Identifiable, Hashable {
             return "take2"
         case .take3:
             return "take3"
+        case .take4:
+            return "take4"
         case .congestion:
             return "congestion"
         }
@@ -27,75 +31,59 @@ enum FirstScreenState: CaseIterable, Identifiable, Hashable {
 }
     
 struct FirstScreen: View {
+    @Binding var forTest: FirstScreenState
     
-    @Binding var screenState: FirstScreenState
-
-    @State private var titleViewState: FSTitleViewState = .congestion
-    @State private var loginOptViewState: FSLoginOpState = .congestion
-    @State private var enterEmailViewState: EnterEmailViewState = .congestion
+    @StateObject private var controller = FirstScreenController()
     
     var body: some View {
         ZStack {
             Color.idleBackground
                 .ignoresSafeArea()
                 .zIndex(0)
-            FSTitleView(viewState: $titleViewState)
             
-            FSLoginOptionView(viewState: $loginOptViewState)
+            FSLoginOptionView(viewState: $controller.loginOptViewState)
+                .zIndex(1)
             
-            EnterEmailView(viewState: $enterEmailViewState)
+            FSTitleView(viewState: $controller.titleViewState)
+                .zIndex(2)
+            
+            EnterEmailView(viewState: $controller.enterEmailViewState)
+                .zIndex(3)
+            
+            EmailLoginWaitingView(viewState: $controller.emailWaitingViewState)
+                .zIndex(3)
+            
         }
-        .onChange(of: screenState) { state in
+        .onChange(of: controller.screenState) { state in
             switch state {
             case .take1:
-                take1()
+                controller.take1()
             case .take2:
-                take2()
+                controller.take2()
             case .take3:
-                take3()
+                controller.take3()
+            case .take4:
+                controller.take4()
+                return
             case .congestion:
                 return
             }
         }
-        .onChange(of: loginOptViewState) { state in
-            if state == .clicked { screenState = .take3 }
+        .onChange(of: controller.loginOptViewState) { state in
+            if state == .emailOptionClicked { controller.screenState = .take3 }
         }
-    }
-}
-
-extension FirstScreen {
-    func take1() {
-        loginOptViewState = .disappear
-        titleViewState = .idle
-        
-        
-        enterEmailViewState = .inactive
-        Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false) { _ in
-            enterEmailViewState = .disappear
+        .onChange(of: controller.enterEmailViewState) { state in
+            if state == .submitSuccess { controller.screenState = .take4 }
         }
-    }
-    
-    func take2() {
-        titleViewState = .upward
-        Timer.scheduledTimer(withTimeInterval: FSTitleViewState.upward.animTime, repeats: false) { _ in
-            loginOptViewState = .appear
+        .onOpenURL {
+            
+            //!!현재 리다이렉션을 통한 앱호출이 로그인 밖에 없음으로 우선 url구분없이 진행
+            controller.redirectionComplete(url: $0)
+            
         }
-        
-        
-        enterEmailViewState = .inactive
-        Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false) { _ in
-            enterEmailViewState = .disappear
-        }
-    }
-    
-    func take3() {
-        titleViewState = .disappear
-        loginOptViewState = .disappear
-        
-        
-        enterEmailViewState = .appear
-        Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false) { _ in
-            enterEmailViewState = .active
+        .onChange(of: forTest) { state in
+            //!!!후에 삭제
+            controller.screenState = state
         }
     }
 }
@@ -106,7 +94,7 @@ fileprivate struct TestView: View {
         ZStack {
             Color.idleBackground
                 .ignoresSafeArea()
-            FirstScreen(screenState: $state)
+            FirstScreen(forTest: $state)
             
             VStack {
                 Spacer()
