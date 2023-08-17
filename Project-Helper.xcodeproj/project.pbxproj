@@ -23,6 +23,7 @@
 		9B63573B2A794BB000098F98 /* Rowdies-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9B6357382A794BB000098F98 /* Rowdies-Bold.ttf */; };
 		9B63573C2A794BB000098F98 /* Rowdies-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9B6357392A794BB000098F98 /* Rowdies-Light.ttf */; };
 		9B63573D2A794BB000098F98 /* Rowdies-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9B63573A2A794BB000098F98 /* Rowdies-Regular.ttf */; };
+		9B78F8C12A8D1DE200207C98 /* DynamicShowingText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B78F8C02A8D1DE200207C98 /* DynamicShowingText.swift */; };
 		9B864F7E2A6AE857002E7C31 /* LoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B864F7D2A6AE857002E7C31 /* LoginManager.swift */; };
 		9B88A3A32A6F74AB0061A182 /* GlobalExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B88A3A22A6F74AB0061A182 /* GlobalExtension.swift */; };
 		9B88A3AC2A718B450061A182 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9B88A3AB2A718B450061A182 /* GoogleService-Info.plist */; };
@@ -79,6 +80,7 @@
 		9B6357382A794BB000098F98 /* Rowdies-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Rowdies-Bold.ttf"; path = "../../../../../Documents/Font file/Rowdies/Rowdies-Bold.ttf"; sourceTree = "<group>"; };
 		9B6357392A794BB000098F98 /* Rowdies-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Rowdies-Light.ttf"; path = "../../../../../Documents/Font file/Rowdies/Rowdies-Light.ttf"; sourceTree = "<group>"; };
 		9B63573A2A794BB000098F98 /* Rowdies-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Rowdies-Regular.ttf"; path = "../../../../../Documents/Font file/Rowdies/Rowdies-Regular.ttf"; sourceTree = "<group>"; };
+		9B78F8C02A8D1DE200207C98 /* DynamicShowingText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicShowingText.swift; sourceTree = "<group>"; };
 		9B864F7D2A6AE857002E7C31 /* LoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginManager.swift; sourceTree = "<group>"; };
 		9B864F7F2A6AEDE0002E7C31 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		9B88A3A22A6F74AB0061A182 /* GlobalExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalExtension.swift; sourceTree = "<group>"; };
@@ -205,10 +207,10 @@
 		9B30AA592A73712800A8A1FD /* View */ = {
 			isa = PBXGroup;
 			children = (
+				9B78F8BF2A8D1DA100207C98 /* EmailWaitingView */,
 				9B5883982A6CFDE900A450B8 /* EmailEnterView */,
 				9BC5A52B2A780B8B008B7EAA /* FSTitleView.swift */,
 				9BC5A52D2A780DAC008B7EAA /* FSLoginOptionView.swift */,
-				9B23C69D2A8A1FFF00CF1C45 /* EmailLoginWaitingView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -249,6 +251,15 @@
 				9B6357362A794B9A00098F98 /* BlackHanSans-Regular.ttf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		9B78F8BF2A8D1DA100207C98 /* EmailWaitingView */ = {
+			isa = PBXGroup;
+			children = (
+				9B23C69D2A8A1FFF00CF1C45 /* EmailLoginWaitingView.swift */,
+				9B78F8C02A8D1DE200207C98 /* DynamicShowingText.swift */,
+			);
+			path = EmailWaitingView;
 			sourceTree = "<group>";
 		};
 		9B864F7C2A6AE83F002E7C31 /* Service */ = {
@@ -572,6 +583,7 @@
 				9B30AA5C2A73715100A8A1FD /* FirstScreen.swift in Sources */,
 				9B09B3FD2A6EDBB4002B4DA3 /* QuaterCircle.swift in Sources */,
 				9B228FE02A814C8900B22790 /* MainSceneController.swift in Sources */,
+				9B78F8C12A8D1DE200207C98 /* DynamicShowingText.swift in Sources */,
 				9B23C69E2A8A1FFF00CF1C45 /* EmailLoginWaitingView.swift in Sources */,
 				9B88A3A32A6F74AB0061A182 /* GlobalExtension.swift in Sources */,
 				9B09B3F82A6EBEF6002B4DA3 /* FoucsedBackgroundView.swift in Sources */,

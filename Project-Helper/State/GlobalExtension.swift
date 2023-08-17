@@ -73,3 +73,18 @@ extension Text {
         }
     }
 }
+
+
+// MARK: - String
+extension Array where Element == String {
+    struct StringWithId: Identifiable {
+        let id: Int
+        var str: String
+    }
+    
+    func mapArrayWithId() -> Array<StringWithId> {
+        self.enumerated().map { index, element in
+            StringWithId(id: index, str: element)
+        }
+    }
+}
