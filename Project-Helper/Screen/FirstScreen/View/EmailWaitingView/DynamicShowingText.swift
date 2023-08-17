@@ -28,18 +28,18 @@ fileprivate struct MovingText: View {
     
     var body: some View {
         Text(str)
-            .font(.blackHansSans(25))
+            .font(.blackHansSans(30))
             .foregroundColor(color1)
             .padding([.trailing, .bottom], 1)
             .background(
                 Text(str)
-                    .font(.blackHansSans(25))
+                    .font(.blackHansSans(30))
                     .foregroundColor(color2)
                     .offset(CGSize(width: 1, height: 1))
             )
             .offset(textPos)
             .padding(.vertical, 3)
-            .clipShape(RoundedRectangle(cornerRadius: 7))
+            .clipShape(RoundedRectangle(cornerRadius: 8))
             .onAppear {
                 textPos = startPos
             }
@@ -97,8 +97,8 @@ struct DynamicShowingText: View {
         CGSize(width: 0, height: 50),
         CGSize(width: 0, height: -50),
     ]
-    private let durationTerm = 1.5
-    private let delayTerm = 0.3
+    private let durationTerm = 0.8
+    private let delayTerm = 0.2
     
     var body: some View {
         
@@ -121,25 +121,29 @@ struct DynamicShowingText: View {
         }
     }
     
+    private func changeState() {
+        movingTextViewState = movingTextViewState == .appear ? .disappear : .appear
+    }
+    
     func activateMovingText() {
         //activate moving text
-        movingTextViewState = .appear
+        changeState()
         
         //repeat animation
         let interval = Double(string.count) * delayTerm + (durationTerm-delayTerm)
-        if timer == nil {
-            timer = Timer(timeInterval: interval, repeats: true, block: { _ in
-                movingTextViewState = movingTextViewState == .appear ? .disappear : .appear
-            })
-        }
-        if let executer = timer, !isTimerRunning {
-            RunLoop.main.add(executer, forMode: .common)
-            isTimerRunning = true
+        
+        if !isTimerRunning {
+            isTimerRunning = true;
+            
+            timer = Timer(timeInterval: interval, repeats: true, block: { _ in changeState()})
+            
+            RunLoop.main.add(timer!, forMode: .common)
         }
     }
     
     func inactivateMovingText() {
         timer?.invalidate()
+        timer = nil
         isTimerRunning = false
     }
 }
@@ -150,7 +154,7 @@ fileprivate struct TestView: View {
         ZStack {
             Color.idleBackground
                 .ignoresSafeArea()
-            DynamicShowingText(viewState: $state, string: "이메일 기다리는중", mainColor: .white, bgColor: .sunflower)
+            DynamicShowingText(viewState: $state, string: "이메일 확인해주세요!", mainColor: .white, bgColor: .sunflower)
 
             VStack {
                 Spacer()

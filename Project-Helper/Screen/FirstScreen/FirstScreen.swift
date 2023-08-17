@@ -31,8 +31,13 @@ enum FirstScreenState: ViewState, Equatable {
 }
     
 struct FirstScreen: View {
+    //
     @Binding var forTest: FirstScreenState
     
+    //
+    @EnvironmentObject var msController: MainSceneController
+    
+    //
     @StateObject private var controller = FirstScreenController()
     
     var body: some View {
@@ -78,7 +83,9 @@ struct FirstScreen: View {
         .onOpenURL {
             
             //!!현재 리다이렉션을 통한 앱호출이 로그인 밖에 없음으로 우선 url구분없이 진행
-            controller.redirectionComplete(url: $0)
+            controller.redirectionComplete(url: $0) {
+                msController.presentScreen(destination: .main)
+            }
             
         }
         .onChange(of: forTest) { state in
@@ -95,6 +102,7 @@ fileprivate struct TestView: View {
             Color.idleBackground
                 .ignoresSafeArea()
             FirstScreen(forTest: $state)
+                .environmentObject(MainSceneController())
             
             VStack {
                 Spacer()

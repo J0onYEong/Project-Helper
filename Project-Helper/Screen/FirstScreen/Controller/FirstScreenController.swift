@@ -16,16 +16,17 @@ class FirstScreenController: ObservableObject {
     @Published var enterEmailViewState: EnterEmailViewState = .initialState
     @Published var emailWaitingViewState: EmailWaitingViewState = .initialState
     
-    func redirectionComplete(url: URL) {
+    func redirectionComplete(url: URL, completion: @escaping () -> ()) {
         LoginManager.shared.authenticationWithLink(link: url) { result in
             switch result {
             case .success(let authData):
-                
                 //take5(메인페이지로 화면전환) 예정
-                
+                completion()
                 return
             case .failure(let error):
                 print("이메일 로그인 과정에서 에러발생")
+                print(error.localizedDescription)
+                
                 //재입력
                 self.screenState = .take3
                 return
@@ -42,6 +43,7 @@ extension FirstScreenController {
         enterEmailViewState = .inactive
         emailWaitingViewState = .disappear
         Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false) { _ in
+            self.emailWaitingViewState = .inactive
             self.enterEmailViewState = .disappear
         }
     }
@@ -50,6 +52,7 @@ extension FirstScreenController {
         titleViewState = .upward
         emailWaitingViewState = .disappear
         Timer.scheduledTimer(withTimeInterval: FSTitleViewState.upward.animTime, repeats: false) { _ in
+            self.emailWaitingViewState = .inactive
             self.loginOptViewState = .appear
         }
         
@@ -68,14 +71,16 @@ extension FirstScreenController {
         enterEmailViewState = .appear
         Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false) { _ in
             self.enterEmailViewState = .active
+            self.emailWaitingViewState = .inactive
         }
     }
     
     func take4() {
         enterEmailViewState = .inactive
+        emailWaitingViewState = .appear
         Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false) { _ in
             self.enterEmailViewState = .disappear
-            self.emailWaitingViewState = .appear
+            self.emailWaitingViewState = .active
         }
     }
 }

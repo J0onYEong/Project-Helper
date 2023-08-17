@@ -23,6 +23,7 @@ struct MainScene: View {
                             .navigationBarBackButtonHidden()
                     case .main:
                         Text("main")
+                            .navigationBarBackButtonHidden()
                     }
                 }
         }
