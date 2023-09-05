@@ -15,10 +15,11 @@ class EnterEmailViewController: ObservableObject {
     @Published var wrongFormatNoti = WrongFormatNotification()
     
     //TextFeild
-    @Published var lineColor: Color = .sunflower
+    @Published var lineColor: Color = idleColor
+    @Published var placeHolderString = ""
     
     //Delete Button
-    @Published var deleteBtnColor: Color = .sunflower
+    @Published var deleteBtnColor: Color = idleColor
     @Published var showingDeleteBtn = false
     @Published var focusReqFromComtroller = false
     
@@ -26,14 +27,19 @@ class EnterEmailViewController: ObservableObject {
     @Published var error: EmailAuthError? = nil
     @Published var showAlert = false
     
-    //Screen Option
-    private(set) var bgColor: Color = .idleBackground
+    //Constant
+    private static let idleColor: Color = .pointColor2
+    private static let errorColor: Color = .errorTextColor
     
     var isEmailForm: Bool {
         let emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
         let regex = try! NSRegularExpression(pattern: emailRegex)
         let matches = regex.matches(in: email, range: NSRange(email.startIndex..., in: email))
         return !matches.isEmpty
+    }
+    
+    func showPlaceHolder() {
+        placeHolderString = "이메일을 입력하세요"
     }
     
     //Reset State
@@ -44,9 +50,12 @@ class EnterEmailViewController: ObservableObject {
     }
     
     func resetUIConfig() {
-        lineColor = .sunflower
-        deleteBtnColor = .sunflower
+        lineColor = Self.idleColor
+        deleteBtnColor = Self.idleColor
         showingDeleteBtn = false
+        
+        //HidePlaceHolder
+        placeHolderString = ""
         
         wrongFormatNoti.resetConfig()
     }
@@ -63,8 +72,8 @@ class EnterEmailViewController: ObservableObject {
     }
     
     func validationFailureConf() {
-        lineColor = .softWarning
-        deleteBtnColor = .softWarning
+        lineColor = Self.errorColor
+        deleteBtnColor = Self.errorColor
         
         wrongFormatNoti.setToWrongEmail()
         
@@ -78,7 +87,7 @@ class EnterEmailViewController: ObservableObject {
     }
     
     func validationSuccessConf() {
-        lineColor = .sunflower
+        lineColor = Self.idleColor
         wrongFormatNoti.clearText()
     }
     

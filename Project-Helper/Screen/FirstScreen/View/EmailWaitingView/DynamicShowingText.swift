@@ -154,7 +154,7 @@ fileprivate struct TestView: View {
         ZStack {
             Color.idleBackground
                 .ignoresSafeArea()
-            DynamicShowingText(viewState: $state, string: "이메일 확인해주세요!", mainColor: .white, bgColor: .sunflower)
+            DynamicShowingText(viewState: $state, string: "이메일 확인해주세요!", mainColor: .cc_white1, bgColor: .cc_blue1)
 
             VStack {
                 Spacer()

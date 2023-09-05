@@ -50,7 +50,7 @@ struct FSLoginOptionView: AnimatableView {
             VStack(spacing: 0) {
                 Text("로그인 방식을 선택해 주세요")
                     .font(.blackHansSans(20))
-                    .foregroundColor(.white)
+                    .foregroundColor(.black)
                     .padding(.bottom, 15)
                     .scaleEffect(btnScale)
                     .font(Font(CTFont(.menuItem, size: 30)))
@@ -64,7 +64,7 @@ struct FSLoginOptionView: AnimatableView {
                         //미구현
                         
                     } label: {
-                        ImageCircle(systemName: "apple.logo", lineColor: .sunflower)
+                        ImageCircle(systemName: "apple.logo", lineColor: .cc_blue1)
                             .scaleEffect(btnScale)
                     }
                     
@@ -75,7 +75,7 @@ struct FSLoginOptionView: AnimatableView {
                     Button {
                         viewState = .emailOptionClicked
                     } label: {
-                        ImageCircle(systemName: "envelope.fill", lineColor: .sunflower)
+                        ImageCircle(systemName: "envelope.fill", lineColor: .cc_blue1)
                             .scaleEffect(btnScale)
                     }
                     

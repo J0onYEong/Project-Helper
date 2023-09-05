@@ -42,7 +42,7 @@ struct EmailLoginWaitingView: View {
     
     var body: some View {
         Group {
-            DynamicShowingText(viewState: $dsViewState, string: "이메일 기다리는중", mainColor: .white, bgColor: .sunflower)
+            DynamicShowingText(viewState: $dsViewState, string: "이메일 기다리는중", mainColor: .cc_white1, bgColor: .cc_red1)
         }
         .offset(viewOffset)
         .onChange(of: viewState) { state in

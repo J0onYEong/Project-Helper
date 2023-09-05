@@ -49,10 +49,15 @@ struct EnterEmailView: AnimatableView {
     private let fontSize: CGFloat = 17.0
     private let tfHeight: CGFloat = 20.0
     
+    //active 애니메이션 진행 시간
+    private let fd: CGFloat = 0.4
+    private let sd: CGFloat = 0.4
+    private var totalAnimTime: CGFloat { fd+sd }
+    
     var body: some View {
         GeometryReader { geo in
             HStack {
-                TextField("이메일을 입력하세요", text: $controller.email)
+                TextField(controller.placeHolderString, text: $controller.email)
                     .font(Font.system(size: fontSize))
                     .autocorrectionDisabled()
                     .textInputAutocapitalization(.never)
@@ -82,13 +87,13 @@ struct EnterEmailView: AnimatableView {
             .padding(.vertical, 10)
             .padding(.horizontal, 20)
             .background(
-                FoucsedBackgroundView(viewState: $fbViewState, lineColor: controller.lineColor, backgroundOrg: controller.bgColor, backgroundTar: .cloud, lineWidth: 4.0, fd: 0.4, sd: 0.2)
+                FoucsedBackgroundView(viewState: $fbViewState, lineColor: controller.lineColor, backgroundOrg: .clear, backgroundTar: .itemBlockColor, lineWidth: 4.0, fd: fd, sd: sd)
             )
             .padding(.horizontal, 20)
             .overlay {
                 Text(controller.wrongFormatNoti.text)
                     .font(Font.system(size: 15, weight: .bold))
-                    .foregroundColor(.softWarning)
+                    .foregroundColor(.errorTextColor)
                     .offset(CGSize(width: 0, height: -50))
                     .scaleEffect(controller.wrongFormatNoti.scaleAmount)
             }
@@ -139,6 +144,9 @@ extension EnterEmailView {
         isDisabled = false
         //FocusedBackground뷰상태 변경
         fbViewState = .active
+        Timer.scheduledTimer(withTimeInterval: totalAnimTime, repeats: false) { _ in
+            self.controller.showPlaceHolder()
+        }
     }
     func inactive() {
         isDisabled = true
