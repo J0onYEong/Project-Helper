@@ -28,6 +28,7 @@
 		9B864F7E2A6AE857002E7C31 /* LoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B864F7D2A6AE857002E7C31 /* LoginManager.swift */; };
 		9B88A3A32A6F74AB0061A182 /* GlobalExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B88A3A22A6F74AB0061A182 /* GlobalExtension.swift */; };
 		9B88A3AC2A718B450061A182 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9B88A3AB2A718B450061A182 /* GoogleService-Info.plist */; };
+		9B933BA92AA8CF1D00CBEA36 /* ShapeForClippingTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B933BA82AA8CF1D00CBEA36 /* ShapeForClippingTabBar.swift */; };
 		9BC5A52C2A780B8B008B7EAA /* FSTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC5A52B2A780B8B008B7EAA /* FSTitleView.swift */; };
 		9BC5A52E2A780DAC008B7EAA /* FSLoginOptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC5A52D2A780DAC008B7EAA /* FSLoginOptionView.swift */; };
 		9BD70AD62A7ABC4300CA1D6E /* GlobalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BD70AD52A7ABC4300CA1D6E /* GlobalView.swift */; };
@@ -87,6 +88,7 @@
 		9B864F7F2A6AEDE0002E7C31 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		9B88A3A22A6F74AB0061A182 /* GlobalExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalExtension.swift; sourceTree = "<group>"; };
 		9B88A3AB2A718B450061A182 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		9B933BA82AA8CF1D00CBEA36 /* ShapeForClippingTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapeForClippingTabBar.swift; sourceTree = "<group>"; };
 		9BC5A52B2A780B8B008B7EAA /* FSTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FSTitleView.swift; sourceTree = "<group>"; };
 		9BC5A52D2A780DAC008B7EAA /* FSLoginOptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FSLoginOptionView.swift; sourceTree = "<group>"; };
 		9BD70AD52A7ABC4300CA1D6E /* GlobalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalView.swift; sourceTree = "<group>"; };
@@ -228,6 +230,7 @@
 		9B3A55B42A911E0200E5246A /* MainScreen */ = {
 			isa = PBXGroup;
 			children = (
+				9B933BA72AA8CEE800CBEA36 /* Shape */,
 				9B3A55B72A911E7B00E5246A /* MainScreen.swift */,
 			);
 			path = MainScreen;
@@ -290,6 +293,14 @@
 				9BE790AF2A7C035800402974 /* GlobalProtocol.swift */,
 			);
 			path = State;
+			sourceTree = "<group>";
+		};
+		9B933BA72AA8CEE800CBEA36 /* Shape */ = {
+			isa = PBXGroup;
+			children = (
+				9B933BA82AA8CF1D00CBEA36 /* ShapeForClippingTabBar.swift */,
+			);
+			path = Shape;
 			sourceTree = "<group>";
 		};
 		9BEB538B2A61777400444D37 = {
@@ -593,6 +604,7 @@
 				9B228FDE2A814C1500B22790 /* NavigationController.swift in Sources */,
 				9BC5A52C2A780B8B008B7EAA /* FSTitleView.swift in Sources */,
 				9B30AA5C2A73715100A8A1FD /* FirstScreen.swift in Sources */,
+				9B933BA92AA8CF1D00CBEA36 /* ShapeForClippingTabBar.swift in Sources */,
 				9B09B3FD2A6EDBB4002B4DA3 /* QuaterCircle.swift in Sources */,
 				9B228FE02A814C8900B22790 /* MainSceneController.swift in Sources */,
 				9B78F8C12A8D1DE200207C98 /* DynamicShowingText.swift in Sources */,

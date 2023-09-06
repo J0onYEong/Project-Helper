@@ -7,14 +7,28 @@
 
 import SwiftUI
 
-protocol TabViewTabSymbol: Hashable & Identifiable {
+protocol TabViewTabSymbol: Hashable & Identifiable & Comparable {
     var title: String { get }
+    
+    static subscript(_ index: Int) -> Self { get }
 }
 
-enum MainScreenTabViewTabSymbol: TabViewTabSymbol {
+enum MainScreenTabViewTabSymbol: Int, TabViewTabSymbol {
+    
+    static func < (lhs: MainScreenTabViewTabSymbol, rhs: MainScreenTabViewTabSymbol) -> Bool {
+        lhs.rawValue < rhs.rawValue
+    }
+    
     var id: UUID { UUID() }
     
-    case projects, calendar, setting, users
+    case projects=0, calendar=1, setting=3, users=4
+    
+    static subscript(_ index: Int) -> Self {
+        guard let caseItem = Self(rawValue: index) else {
+            fatalError("MainScreenTabViewTabSymbol 잘못된 인덱스 전달")
+        }
+        return caseItem
+    }
     
     var title: String {
         switch self {
@@ -31,32 +45,15 @@ enum MainScreenTabViewTabSymbol: TabViewTabSymbol {
 }
 
 
-struct MainSceneTabViewOutLineShape: Shape {
-    func path(in rect: CGRect) -> Path {
-        var path = Path()
-        
-        let curveStartPosOfY = rect.maxY/10
-        
-        path.move(to: CGPoint(x: rect.maxX, y: curveStartPosOfY))
-        
-        path.addQuadCurve(to: CGPoint(x: rect.midX, y: rect.minY), control: CGPoint(x: rect.maxX*3/4, y: rect.minY))
-        
-        path.addQuadCurve(to: CGPoint(x: rect.minX, y: curveStartPosOfY), control: CGPoint(x: rect.maxX/4, y: rect.minY))
-        
-        path.addLine(to: CGPoint(x: rect.minX, y: rect.maxY))
-        
-        path.addLine(to: CGPoint(x: rect.maxX, y: rect.maxY))
-        
-        path.closeSubpath()
-        
-        return path
-    }
-}
-
-
 struct MainScreen<ScreenSymbol>: View where ScreenSymbol: TabViewTabSymbol {
     
     var screenForTab: [ScreenSymbol : AnyView]
+    
+    var screenKeys: [ScreenSymbol] { screenForTab.keys.sorted() }
+    
+    @State private var selectedIndexOfTabItem = 2
+    
+    private let curveHeightOfTabBar: CGFloat = 10
     
     var body: some View {
         ZStack {
@@ -66,28 +63,47 @@ struct MainScreen<ScreenSymbol>: View where ScreenSymbol: TabViewTabSymbol {
                 
                 VStack(spacing: 0) {
                     
-                    let tabItemWidth = UIScreen.main.bounds.width/5
-                    
                     Spacer(minLength: 0)
                     
-                    HStack(spacing: 0) {
-                        Rectangle()
-                        Rectangle()
-                            .foregroundColor(.red)
-                        Rectangle()
-                        Rectangle()
-                            .foregroundColor(.red)
-                        Rectangle()
+                    ZStack {
+                        GeometryReader { geo in
+                            Rectangle()
+                                .fill(.cc_white1)
+                                .frame(height: 200)
+                                .position(x: geo.size.width/2, y: geo.size.height/2+100)
+                        }
                         
+                        //현재 클릭된 탭아이템을 가리키는 바
+                        TabViewMovingBarView(indexOfTabItem: $selectedIndexOfTabItem, countOfTabItems: 5, curveHeight: curveHeightOfTabBar)
+                        
+                        HStack(spacing: 0) {
+                            ForEach(0..<5) { index in
+                                ZStack {
+                                    Rectangle()
+                                        .fill(.cc_white1)
+                                    if index == 2 {
+                                        Text("+")
+                                    } else {
+                                        Text(ScreenSymbol[index].title)
+                                    }
+                                }
+                                .contentShape(Rectangle())
+                                .onTapGesture {
+                                    withAnimation(.easeOut(duration: 0.25)) {
+                                        selectedIndexOfTabItem = index
+                                    }
+                                }
+                            }
+                        }
+                        .clipShape(RoundedTopRectangle(curveHeight: curveHeightOfTabBar))
+                        .padding(.top, 3)
                     }
                     .frame(height: 50)
-                    .clipShape(MainSceneTabViewOutLineShape())
                 }
             }
         }
     }
 }
-
 
 
 //------------------------------------------------------------------------
