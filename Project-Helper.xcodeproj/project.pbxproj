@@ -11,6 +11,7 @@
 		22B20017131319AACC5F4FCB /* libPods-Project-HelperUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 68B9F320BF54422207AD46C3 /* libPods-Project-HelperUITests.a */; };
 		9B09B3F82A6EBEF6002B4DA3 /* FoucsedBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B09B3F72A6EBEF6002B4DA3 /* FoucsedBackgroundView.swift */; };
 		9B09B3FD2A6EDBB4002B4DA3 /* QuaterCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B09B3FC2A6EDBB4002B4DA3 /* QuaterCircle.swift */; };
+		9B1E4FF52AA9DB5300D9CBEB /* MSTabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B1E4FF42AA9DB5300D9CBEB /* MSTabBarView.swift */; };
 		9B228FDA2A81491600B22790 /*  MainScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B228FD92A81491600B22790 /*  MainScene.swift */; };
 		9B228FDE2A814C1500B22790 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B228FDD2A814C1500B22790 /* NavigationController.swift */; };
 		9B228FE02A814C8900B22790 /* MainSceneController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B228FDF2A814C8900B22790 /* MainSceneController.swift */; };
@@ -69,6 +70,7 @@
 		8F1C6C3B322CDB39F57BAEE9 /* libPods-Project-HelperTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Project-HelperTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B09B3F72A6EBEF6002B4DA3 /* FoucsedBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoucsedBackgroundView.swift; sourceTree = "<group>"; };
 		9B09B3FC2A6EDBB4002B4DA3 /* QuaterCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuaterCircle.swift; sourceTree = "<group>"; };
+		9B1E4FF42AA9DB5300D9CBEB /* MSTabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSTabBarView.swift; sourceTree = "<group>"; };
 		9B228FD92A81491600B22790 /*  MainScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = " MainScene.swift"; sourceTree = "<group>"; };
 		9B228FDD2A814C1500B22790 /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		9B228FDF2A814C8900B22790 /* MainSceneController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSceneController.swift; sourceTree = "<group>"; };
@@ -165,6 +167,14 @@
 			path = CustomShape;
 			sourceTree = "<group>";
 		};
+		9B1E4FF32AA9DB4000D9CBEB /* View */ = {
+			isa = PBXGroup;
+			children = (
+				9B1E4FF42AA9DB5300D9CBEB /* MSTabBarView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		9B228FD82A8148F300B22790 /* Scene */ = {
 			isa = PBXGroup;
 			children = (
@@ -230,6 +240,7 @@
 		9B3A55B42A911E0200E5246A /* MainScreen */ = {
 			isa = PBXGroup;
 			children = (
+				9B1E4FF32AA9DB4000D9CBEB /* View */,
 				9B933BA72AA8CEE800CBEA36 /* Shape */,
 				9B3A55B72A911E7B00E5246A /* MainScreen.swift */,
 			);
@@ -599,6 +610,7 @@
 				9B30AA572A7369C200A8A1FD /* EmailScreenController.swift in Sources */,
 				9B3A55B82A911E7B00E5246A /* MainScreen.swift in Sources */,
 				9B228FDA2A81491600B22790 /*  MainScene.swift in Sources */,
+				9B1E4FF52AA9DB5300D9CBEB /* MSTabBarView.swift in Sources */,
 				9BEB53982A61777400444D37 /* Project_HelperApp.swift in Sources */,
 				9BC5A52E2A780DAC008B7EAA /* FSLoginOptionView.swift in Sources */,
 				9B228FDE2A814C1500B22790 /* NavigationController.swift in Sources */,

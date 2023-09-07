@@ -48,15 +48,9 @@ struct RoundedTopRectanglePart: Shape {
         var path = Path()
         
         let sinValue = (UIScreen.main.bounds.width/2) / radiusOfBaseCircle
-        
         let wholeDegree = (asin(sinValue) * 180.0 / Double.pi) * 2
-        
         let partAngleOfDegreee = wholeDegree / CGFloat(countOfParts)
-        
         let centerOfArc = CGPoint(x: rect.midX, y: radiusOfBaseCircle)
-        
-        path.move(to: centerOfArc)
-        
         let startDegreeOfAngle = -90-partAngleOfDegreee/2
         let endDegreeeOfAngle = startDegreeOfAngle+partAngleOfDegreee
         
@@ -70,73 +64,35 @@ struct RoundedTopRectanglePart: Shape {
     }
 }
 
-struct TabViewMovingBarView: View {
-    @Binding var indexOfTabItem: Int
-    
-    var countOfTabItems: Int
-    
+struct RoundedBarShape: Shape {
     var curveHeight: CGFloat
     
-    @State private var opacityOfBar = 0.0
+    var heightOfMovingBar: CGFloat
     
-    private var radiusOfBaseCircle: CGFloat {
-        (pow(curveHeight, 2) + pow(UIScreen.main.bounds.width, 2)/4) / (2*curveHeight)
-    }
+    var radiusOfBaseCircle: CGFloat
     
-    private var centerPosOfBaseCircle: CGPoint {
-        CGPoint(x: UIScreen.main.bounds.width/2, y: radiusOfBaseCircle)
-    }
+    var countOfParts: Int
     
-    private var degreeOfPart: CGFloat {
+    func path(in rect: CGRect) -> Path {
+        var path = Path()
+        
         let sinValue = (UIScreen.main.bounds.width/2) / radiusOfBaseCircle
-        let wholeDegreeOfAngle = (asin(sinValue) * 180.0 / Double.pi) * 2
-        return wholeDegreeOfAngle / CGFloat(countOfTabItems)
-    }
-
-    
-    var body: some View {
-        ZStack {
-            RoundedTopRectanglePart(curveHeight: curveHeight, radiusOfBaseCircle: radiusOfBaseCircle, countOfParts: countOfTabItems)
-                .fill(.cc_red1.opacity(opacityOfBar))
-                .rotationEffect(.degrees(degreeOfPart * CGFloat(indexOfTabItem-Int(countOfTabItems/2))), anchor: UnitPoint(x: 0.5, y: centerPosOfBaseCircle.y / 50))
-        }
-        .frame(height: 50)
-        .clipped()
-        .onChange(of: indexOfTabItem) { newValue in
-            
-            opacityOfBar = 0.5
-            
-            Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false) { _ in
-                withAnimation(.linear(duration: 1.0)) {
-                    opacityOfBar = 0.0
-                }
-            }
-        }
-    }
-}
-
-
-fileprivate struct TestView: View {
-    @State private var order = 0
-    
-    var body: some View {
-        ZStack {
-            ZStack {
-                Picker("select order", selection: $order) {
-                    ForEach(0..<5) {
-                        Text("\($0)")
-                    }
-                }
-            }
-            Spacer(minLength: 0)
-            TabViewMovingBarView(indexOfTabItem: $order, countOfTabItems: 5, curveHeight: 5)
-        }
-
-    }
-}
-
-struct ShapeTestView_Previews: PreviewProvider {
-    static var previews: some View {
-        TestView()
+        
+        let wholeDegree = (asin(sinValue) * 180.0 / Double.pi) * 2
+        
+        let partAngleOfDegreee = wholeDegree / CGFloat(countOfParts)
+        
+        let centerOfArc = CGPoint(x: rect.midX, y: radiusOfBaseCircle)
+        
+        let startDegreeOfAngle = -90-partAngleOfDegreee/2
+        let endDegreeeOfAngle = startDegreeOfAngle+partAngleOfDegreee
+        
+        path.addArc(center: centerOfArc, radius: radiusOfBaseCircle, startAngle: .degrees(startDegreeOfAngle), endAngle: .degrees(endDegreeeOfAngle), clockwise: false)
+        
+        path.addArc(center: centerOfArc, radius: radiusOfBaseCircle-heightOfMovingBar, startAngle: .degrees(endDegreeeOfAngle), endAngle: .degrees(startDegreeOfAngle), clockwise: true)
+        
+        path.closeSubpath()
+        
+        return path
     }
 }

@@ -7,8 +7,13 @@
 
 import SwiftUI
 
+
 protocol TabViewTabSymbol: Hashable & Identifiable & Comparable {
     var title: String { get }
+    
+    var idleStateSystemImageName: String { get }
+    
+    var clickedStateSystemImageName: String { get }
     
     static subscript(_ index: Int) -> Self { get }
 }
@@ -21,7 +26,7 @@ enum MainScreenTabViewTabSymbol: Int, TabViewTabSymbol {
     
     var id: UUID { UUID() }
     
-    case projects=0, calendar=1, setting=3, users=4
+    case projects=0, calendar=1, addProject=2, users=3, setting=4
     
     static subscript(_ index: Int) -> Self {
         guard let caseItem = Self(rawValue: index) else {
@@ -36,30 +41,64 @@ enum MainScreenTabViewTabSymbol: Int, TabViewTabSymbol {
             return "projects"
         case .users:
             return "users"
+        case .addProject:
+            return "addProject"
         case .calendar:
             return "calendar"
         case .setting:
             return "setting"
         }
     }
+    
+    var idleStateSystemImageName: String {
+        switch self {
+        case .projects:
+            return "list.bullet.circle"
+        case .users:
+            return "person.2.circle"
+        case .addProject:
+            return "plus.circle"
+        case .calendar:
+            return "calendar.circle"
+        case .setting:
+            return "gearshape.circle"
+        }
+    }
+    
+    var clickedStateSystemImageName: String {
+        switch self {
+        case .projects:
+            return "list.bullet.circle.fill"
+        case .users:
+            return "person.2.circle.fill"
+        case .addProject:
+            return "plus.circle.fill"
+        case .calendar:
+            return "calendar.circle.fill"
+        case .setting:
+            return "gearshape.circle.fill"
+        }
+    }
 }
 
 
-struct MainScreen<ScreenSymbol>: View where ScreenSymbol: TabViewTabSymbol {
+
+struct MainScreen: View  {
     
-    var screenForTab: [ScreenSymbol : AnyView]
-    
-    var screenKeys: [ScreenSymbol] { screenForTab.keys.sorted() }
-    
-    @State private var selectedIndexOfTabItem = 2
+    @State private var selectedIndexOfTabItem = 0
     
     private let curveHeightOfTabBar: CGFloat = 10
+    private let heightOfTabBar: CGFloat = 50
     
     var body: some View {
         ZStack {
             Color.idleBackground
                 .ignoresSafeArea()
             ZStack {
+                
+                Rectangle()
+                    .fill(.pointColor1)
+                    .padding(.bottom, heightOfTabBar-curveHeightOfTabBar)
                 
                 VStack(spacing: 0) {
                     
@@ -73,32 +112,9 @@ struct MainScreen<ScreenSymbol>: View where ScreenSymbol: TabViewTabSymbol {
                                 .position(x: geo.size.width/2, y: geo.size.height/2+100)
                         }
                         
-                        //현재 클릭된 탭아이템을 가리키는 바
-                        TabViewMovingBarView(indexOfTabItem: $selectedIndexOfTabItem, countOfTabItems: 5, curveHeight: curveHeightOfTabBar)
-                        
-                        HStack(spacing: 0) {
-                            ForEach(0..<5) { index in
-                                ZStack {
-                                    Rectangle()
-                                        .fill(.cc_white1)
-                                    if index == 2 {
-                                        Text("+")
-                                    } else {
-                                        Text(ScreenSymbol[index].title)
-                                    }
-                                }
-                                .contentShape(Rectangle())
-                                .onTapGesture {
-                                    withAnimation(.easeOut(duration: 0.25)) {
-                                        selectedIndexOfTabItem = index
-                                    }
-                                }
-                            }
-                        }
-                        .clipShape(RoundedTopRectangle(curveHeight: curveHeightOfTabBar))
-                        .padding(.top, 3)
+                        MainScreenTabBarView<MainScreenTabViewTabSymbol>(selectedIndex: $selectedIndexOfTabItem, heightOfBar: heightOfTabBar, curveHeight: curveHeightOfTabBar)
                     }
-                    .frame(height: 50)
+                    .frame(height: heightOfTabBar)
                 }
             }
         }
@@ -111,15 +127,15 @@ struct MainScreen<ScreenSymbol>: View where ScreenSymbol: TabViewTabSymbol {
 fileprivate struct TestView: View {
     var body: some View {
         
-        let tabs: [MainScreenTabViewTabSymbol : AnyView] = [
-            .projects : AnyView(Rectangle().foregroundColor(.red)),
-            .calendar : AnyView(Rectangle().foregroundColor(.blue)),
-            .users : AnyView(Rectangle().foregroundColor(.yellow)),
-            .setting : AnyView(Rectangle().foregroundColor(.purple)),
-        ]
+//        let tabs: [MainScreenTabViewTabSymbol : AnyView] = [
+//            .projects : AnyView(Rectangle().foregroundColor(.red)),
+//            .calendar : AnyView(Rectangle().foregroundColor(.blue)),
+//            .users : AnyView(Rectangle().foregroundColor(.yellow)),
+//            .setting : AnyView(Rectangle().foregroundColor(.purple)),
+//        ]
+//
         
-        
-        MainScreen(screenForTab: tabs)
+        MainScreen()
     }
 }
 
