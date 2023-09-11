@@ -28,8 +28,8 @@ struct RoundedTopRectangle: Shape {
         
         path.addArc(tangent1End: tangent1EndPos, tangent2End: tangent2EndPos, radius: radius)
         
-        path.addLine(to: CGPoint(x: rect.maxX, y: rect.maxY))
-        path.addLine(to: CGPoint(x: rect.minX, y: rect.maxY))
+        path.addLine(to: CGPoint(x: rect.maxX, y: rect.maxY + curveHeight))
+        path.addLine(to: CGPoint(x: rect.minX, y: rect.maxY + curveHeight))
         path.closeSubpath()
         
         

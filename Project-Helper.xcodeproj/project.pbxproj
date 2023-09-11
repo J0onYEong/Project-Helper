@@ -21,6 +21,7 @@
 		9B30AA5C2A73715100A8A1FD /* FirstScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B30AA5B2A73715100A8A1FD /* FirstScreen.swift */; };
 		9B3A55B82A911E7B00E5246A /* MainScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B3A55B72A911E7B00E5246A /* MainScreen.swift */; };
 		9B58839F2A6CFE6200A450B8 /* EnterEmailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B58839E2A6CFE6200A450B8 /* EnterEmailView.swift */; };
+		9B5E4CEF2AAF36F00050FC38 /* LongPressButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B5E4CEE2AAF36F00050FC38 /* LongPressButtonView.swift */; };
 		9B6357372A794B9A00098F98 /* BlackHanSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9B6357362A794B9A00098F98 /* BlackHanSans-Regular.ttf */; };
 		9B63573B2A794BB000098F98 /* Rowdies-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9B6357382A794BB000098F98 /* Rowdies-Bold.ttf */; };
 		9B63573C2A794BB000098F98 /* Rowdies-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9B6357392A794BB000098F98 /* Rowdies-Light.ttf */; };
@@ -81,6 +82,7 @@
 		9B3A55B72A911E7B00E5246A /* MainScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreen.swift; sourceTree = "<group>"; };
 		9B5883962A6CFD3200A450B8 /* Project-Helper.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Project-Helper.entitlements"; sourceTree = "<group>"; };
 		9B58839E2A6CFE6200A450B8 /* EnterEmailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterEmailView.swift; sourceTree = "<group>"; };
+		9B5E4CEE2AAF36F00050FC38 /* LongPressButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LongPressButtonView.swift; sourceTree = "<group>"; };
 		9B6357362A794B9A00098F98 /* BlackHanSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "BlackHanSans-Regular.ttf"; path = "../../../../../Documents/Font file/Black_Han_Sans/BlackHanSans-Regular.ttf"; sourceTree = "<group>"; };
 		9B6357382A794BB000098F98 /* Rowdies-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Rowdies-Bold.ttf"; path = "../../../../../Documents/Font file/Rowdies/Rowdies-Bold.ttf"; sourceTree = "<group>"; };
 		9B6357392A794BB000098F98 /* Rowdies-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Rowdies-Light.ttf"; path = "../../../../../Documents/Font file/Rowdies/Rowdies-Light.ttf"; sourceTree = "<group>"; };
@@ -171,6 +173,7 @@
 			isa = PBXGroup;
 			children = (
 				9B1E4FF42AA9DB5300D9CBEB /* MSTabBarView.swift */,
+				9B5E4CEE2AAF36F00050FC38 /* LongPressButtonView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -616,6 +619,7 @@
 				9B228FDE2A814C1500B22790 /* NavigationController.swift in Sources */,
 				9BC5A52C2A780B8B008B7EAA /* FSTitleView.swift in Sources */,
 				9B30AA5C2A73715100A8A1FD /* FirstScreen.swift in Sources */,
+				9B5E4CEF2AAF36F00050FC38 /* LongPressButtonView.swift in Sources */,
 				9B933BA92AA8CF1D00CBEA36 /* ShapeForClippingTabBar.swift in Sources */,
 				9B09B3FD2A6EDBB4002B4DA3 /* QuaterCircle.swift in Sources */,
 				9B228FE02A814C8900B22790 /* MainSceneController.swift in Sources */,

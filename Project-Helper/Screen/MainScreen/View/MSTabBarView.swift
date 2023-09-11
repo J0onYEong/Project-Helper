@@ -37,6 +37,7 @@ struct MainScreenTabBarView<ScreenSymbol>: View where ScreenSymbol: TabViewTabSy
     
     //Constant value
     private let countOfTabs: Int = 5
+    private let movingDurationOfBar = 0.25
     
     //State
     @State private var offsetYOfMovingBar: CGFloat = -3.5
@@ -55,36 +56,22 @@ struct MainScreenTabBarView<ScreenSymbol>: View where ScreenSymbol: TabViewTabSy
                         let imageName = isSelected ? ScreenSymbol[index].clickedStateSystemImageName : ScreenSymbol[index].idleStateSystemImageName
                         
                         VStack {
-                            Image(systemName: imageName)
-                                .resizable()
-                                .animation(nil, value: isSelected)
-                                .foregroundColor(isSelected ? .cc_red1 : .black)
-                                .aspectRatio(1, contentMode: .fit)
-                                .frame(width: imageBoxSize)
-                                .padding(.top, imageTopPadding)
+                            ZStack {
+                                LongPressButtonView { withAnimation(.easeOut(duration: movingDurationOfBar)) { selectedIndex = index } }
+                                    .frame(width: imageBoxSize+10, height: imageBoxSize+10)
+                                Image(systemName: imageName)
+                                    .resizable()
+                                    .foregroundColor(isSelected ? .cc_red1 : .black)
+                                    .frame(width: imageBoxSize, height: imageBoxSize)
+                            }
+                            .padding(.top, imageTopPadding)
                             Spacer()
                         }
                     }
                     .frame(height: heightOfBar)
                     .rotationEffect(.degrees(degreeOfPart * CGFloat(index-2)), anchor: UnitPoint(x: 0.5, y: centerPosOfBaseCircle.y / heightOfBar))
-                    .onTapGesture {
-                        let movingDuration = 0.25
-                        
-                        withAnimation(.linear(duration: movingDuration)) {
-                            selectedIndex = index
-                        }
-                        
-                        barOffsetDisappearWaitTimer?.invalidate()
-                        
-                        barOffsetDisappearWaitTimer = Timer(timeInterval: movingDuration+1.0, repeats: false) { _ in
-                            withAnimation(.linear(duration: 0.5)) {
-                                offsetYOfMovingBar = -3.5
-                            }
-                        }
-                        
-                        RunLoop.main.add(barOffsetDisappearWaitTimer!, forMode: .common)
-    
-                    }
+                    
+                    
                 }
             }
             
@@ -99,6 +86,13 @@ struct MainScreenTabBarView<ScreenSymbol>: View where ScreenSymbol: TabViewTabSy
         .clipShape(RoundedTopRectangle(curveHeight: curveHeight))
         .onChange(of: selectedIndex) { _ in
             offsetYOfMovingBar = 0.0
+            
+            barOffsetDisappearWaitTimer?.invalidate()
+            
+            barOffsetDisappearWaitTimer = Timer(timeInterval: movingDurationOfBar+1.0, repeats: false) { _ in
+                withAnimation(.linear(duration: 0.5)) { offsetYOfMovingBar = -3.5 }
+            }
+            RunLoop.main.add(barOffsetDisappearWaitTimer!, forMode: .common)
         }
     }
 }

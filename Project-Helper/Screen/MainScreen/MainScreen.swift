@@ -97,7 +97,7 @@ struct MainScreen: View  {
             ZStack {
                 
                 Rectangle()
-                    .fill(.pointColor1)
+                    .fill(.cc_white2)
                     .padding(.bottom, heightOfTabBar-curveHeightOfTabBar)
                 
                 VStack(spacing: 0) {
