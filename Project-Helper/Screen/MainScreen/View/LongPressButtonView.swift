@@ -7,66 +7,125 @@
 
 import SwiftUI
 
-struct LongPressButtonView: View {
+struct LongPressButtonView<Label>: View where Label: View {
     
-    var onEndedAction: () -> ()
+    var actionWhenPressGestureEnded: () -> ()
     
+    var label: () -> Label
+    
+    //backgroundCircle
     @State private var opacityOfCircle: CGFloat = 0.0
-    @State private var opacityEventTimer: Timer?
+    @State private var circleOpacityEventTimer: Timer?
     
-    private let opacityVarianceValue: CGFloat = 0.01
-    private let targetOpacityOfCircle: CGFloat = 0.7
-    private let timeOfFulfillOpacity: CGFloat = 0.5
+    //label
+    @State private var scaleValueOfLabel: CGFloat = 1.0
+    @State private var labelScaleEventTimer: Timer?
+    
+    //constant of label
+    private let labelScaleVarianceValue: CGFloat = 0.01
+    private let targetScaleOfLabel: CGFloat = 0.9
+    private let timeOfFulfillLabelScale: CGFloat = 0.5
+    
+    //constant of circle
+    private let circleOpacityVarianceValue: CGFloat = 0.01
+    private let targetOpacityOfCircle: CGFloat = 0.5
+    private let timeOfFulfillCircleOpacity: CGFloat = 0.5
+    
+    //Gesture
+    let pressAndDrageGesture = LongPressGesture(minimumDuration: 0.0)
+        .sequenced(before: DragGesture(minimumDistance: 0, coordinateSpace: .local))
+    
+    //caculation property
+    private var circleOpacitytimesOfvariance: CGFloat { targetOpacityOfCircle / circleOpacityVarianceValue }
+    private var circleOpacityTimerIntetval: CGFloat { timeOfFulfillCircleOpacity / circleOpacitytimesOfvariance }
     
     var body: some View {
         ZStack {
-            let timesOfvariance = targetOpacityOfCircle / opacityVarianceValue
-            let timerTerm = timeOfFulfillOpacity / timesOfvariance
-            let pressAndDrageGesture = LongPressGesture(minimumDuration: 0.0)
-                .sequenced(before: DragGesture(minimumDistance: 0, coordinateSpace: .local))
-            
             Circle()
                 .fill(.gray.opacity(opacityOfCircle))
                 .contentShape(Circle())
                 .gesture(
                     pressAndDrageGesture
                         .onChanged({ _ in
-                            if let timer = opacityEventTimer, timer.isValid { return; }
-                            opacityEventTimer?.invalidate()
-                            opacityEventTimer = Timer(timeInterval: timerTerm, repeats: true, block: { timer in
-                                opacityOfCircle += opacityVarianceValue
-                                if opacityOfCircle >= targetOpacityOfCircle {
-                                    opacityOfCircle = targetOpacityOfCircle
-                                    timer.invalidate()
-                                }
-                            })
-                            
-                            RunLoop.main.add(opacityEventTimer!, forMode: .common)
+                            labelScaleDecreaseStart()
+                            circleOpacityIncreaseStart()
                         })
                         .onEnded({ _ in
+                            actionWhenPressGestureEnded()
                             
-                            onEndedAction()
-                            
-                            opacityEventTimer?.invalidate()
-                            opacityEventTimer = Timer(timeInterval: timerTerm, repeats: true, block: { timer in
-                                opacityOfCircle -= opacityVarianceValue
-                                if opacityOfCircle < 0 {
-                                    opacityOfCircle = 0.0
-                                    timer.invalidate()
-                                }
-                            })
-
-                            RunLoop.main.add(opacityEventTimer!, forMode: .common)
+                            labelScaleIncreaseStart()
+                            circleOpacityDecreaseStart()
                         })
                 )
             
+            label()
+                .scaleEffect(scaleValueOfLabel)
+                .allowsHitTesting(false)
         }
+    }
+    
+    //label
+    func labelScaleDecreaseStart() {
+        let labelScaletimesOfvariance: CGFloat = (1-targetScaleOfLabel) / labelScaleVarianceValue
+        let labelScaleTimerIntetval: CGFloat = timeOfFulfillLabelScale / labelScaletimesOfvariance
+        
+        if let timer = labelScaleEventTimer, timer.isValid { return; }
+        labelScaleEventTimer?.invalidate()
+        labelScaleEventTimer = Timer(timeInterval: labelScaleTimerIntetval, repeats: true, block: { timer in
+            scaleValueOfLabel -= labelScaleVarianceValue
+            if scaleValueOfLabel <= targetScaleOfLabel {
+                scaleValueOfLabel = targetScaleOfLabel
+                timer.invalidate()
+            }
+        })
+        
+        RunLoop.main.add(labelScaleEventTimer!, forMode: .common)
+    }
+    
+    func labelScaleIncreaseStart() {
+        labelScaleEventTimer?.invalidate()
+        withAnimation(.interpolatingSpring(stiffness: 500, damping: 20)) {
+            scaleValueOfLabel = 1.0
+        }
+    }
+    
+    //circle
+    func circleOpacityIncreaseStart() {
+        if let timer = circleOpacityEventTimer, timer.isValid { return; }
+        circleOpacityEventTimer?.invalidate()
+        circleOpacityEventTimer = Timer(timeInterval: circleOpacityTimerIntetval, repeats: true, block: { timer in
+            opacityOfCircle += circleOpacityVarianceValue
+            if opacityOfCircle >= targetOpacityOfCircle {
+                opacityOfCircle = targetOpacityOfCircle
+                timer.invalidate()
+            }
+        })
+        
+        RunLoop.main.add(circleOpacityEventTimer!, forMode: .common)
+    }
+    
+    func circleOpacityDecreaseStart() {
+        circleOpacityEventTimer?.invalidate()
+        circleOpacityEventTimer = Timer(timeInterval: circleOpacityTimerIntetval, repeats: true, block: { timer in
+            opacityOfCircle -= circleOpacityVarianceValue
+            if opacityOfCircle < 0 {
+                opacityOfCircle = 0.0
+                timer.invalidate()
+            }
+        })
+
+        RunLoop.main.add(circleOpacityEventTimer!, forMode: .common)
     }
 }
 
 struct LongPressButtonView_Previews: PreviewProvider {
     static var previews: some View {
-        LongPressButtonView { }
+        LongPressButtonView { } label: {
+            Image(systemName: "person.circle")
+                .resizable()
+                .padding(5)
+        }
+        .frame(width: 40, height: 40)
     }
 }
 

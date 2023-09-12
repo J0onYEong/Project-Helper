@@ -169,6 +169,53 @@
 			path = CustomShape;
 			sourceTree = "<group>";
 		};
+		9B14A73D2AB0C65A000299DD /* TabScreens */ = {
+			isa = PBXGroup;
+			children = (
+				9B14A73E2AB0C680000299DD /* ProjectsTabScreen */,
+				9B14A7412AB0C7BF000299DD /* CalendarTabScreen */,
+				9B14A7422AB0C7CD000299DD /* AddTabScreen */,
+				9B14A7432AB0C866000299DD /* MatesTabScreen */,
+				9B14A7442AB0C886000299DD /* SettingTabScreen */,
+			);
+			path = TabScreens;
+			sourceTree = "<group>";
+		};
+		9B14A73E2AB0C680000299DD /* ProjectsTabScreen */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ProjectsTabScreen;
+			sourceTree = "<group>";
+		};
+		9B14A7412AB0C7BF000299DD /* CalendarTabScreen */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CalendarTabScreen;
+			sourceTree = "<group>";
+		};
+		9B14A7422AB0C7CD000299DD /* AddTabScreen */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = AddTabScreen;
+			sourceTree = "<group>";
+		};
+		9B14A7432AB0C866000299DD /* MatesTabScreen */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = MatesTabScreen;
+			sourceTree = "<group>";
+		};
+		9B14A7442AB0C886000299DD /* SettingTabScreen */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = SettingTabScreen;
+			sourceTree = "<group>";
+		};
 		9B1E4FF32AA9DB4000D9CBEB /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -253,6 +300,7 @@
 		9B5883972A6CFDCC00A450B8 /* Screen */ = {
 			isa = PBXGroup;
 			children = (
+				9B14A73D2AB0C65A000299DD /* TabScreens */,
 				9B3A55B42A911E0200E5246A /* MainScreen */,
 				9B30AA582A73711F00A8A1FD /* FirstScreen */,
 			);

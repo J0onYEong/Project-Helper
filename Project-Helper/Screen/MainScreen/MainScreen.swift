@@ -82,6 +82,20 @@ enum MainScreenTabViewTabSymbol: Int, TabViewTabSymbol {
 }
 
 
+struct TestTab: View {
+    var str: String
+    
+    var body: some View {
+        Text("str")
+            .padding(10)
+            .background(
+                RoundedRectangle(cornerRadius: 5)
+                    .fill(.cc_white1)
+            )
+    }
+}
+
+
 
 struct MainScreen: View  {
     

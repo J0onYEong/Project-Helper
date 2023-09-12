@@ -32,10 +32,11 @@ struct MainScreenTabBarView<ScreenSymbol>: View where ScreenSymbol: TabViewTabSy
     //------------------------------------------
     
     //연산 프로퍼티
-    private var imageBoxSize: CGFloat { heightOfBar * 0.5 }
+    private var imageBoxWidth: CGFloat { heightOfBar * 0.7 }
     private var imageTopPadding: CGFloat { heightOfBar * 0.25 }
     
     //Constant value
+    private let longPressCircleDiameter: CGFloat = 5.0
     private let countOfTabs: Int = 5
     private let movingDurationOfBar = 0.25
     
@@ -56,22 +57,19 @@ struct MainScreenTabBarView<ScreenSymbol>: View where ScreenSymbol: TabViewTabSy
                         let imageName = isSelected ? ScreenSymbol[index].clickedStateSystemImageName : ScreenSymbol[index].idleStateSystemImageName
                         
                         VStack {
-                            ZStack {
-                                LongPressButtonView { withAnimation(.easeOut(duration: movingDurationOfBar)) { selectedIndex = index } }
-                                    .frame(width: imageBoxSize+10, height: imageBoxSize+10)
+                            LongPressButtonView { withAnimation(.easeOut(duration: movingDurationOfBar)) { selectedIndex = index } } label: {
                                 Image(systemName: imageName)
                                     .resizable()
                                     .foregroundColor(isSelected ? .cc_red1 : .black)
-                                    .frame(width: imageBoxSize, height: imageBoxSize)
+                                    .padding(longPressCircleDiameter)
                             }
+                            .frame(width: imageBoxWidth+longPressCircleDiameter, height: imageBoxWidth+longPressCircleDiameter)
                             .padding(.top, imageTopPadding)
                             Spacer()
                         }
                     }
                     .frame(height: heightOfBar)
                     .rotationEffect(.degrees(degreeOfPart * CGFloat(index-2)), anchor: UnitPoint(x: 0.5, y: centerPosOfBaseCircle.y / heightOfBar))
-                    
-                    
                 }
             }
             
