@@ -48,6 +48,11 @@ struct MainScreenTabBarView<ScreenSymbol>: View where ScreenSymbol: TabViewTabSy
         ZStack {
             //TabItems
             ZStack {
+                
+                //각도오차로 인해 약간 빈틈이 발생함, 아래뷰로 가려줌
+                RoundedTopRectangle(curveHeight: curveHeight)
+                    .foregroundColor(.cc_white1)
+                
                 ForEach(0..<5) { index in
                     ZStack {
                         RoundedTopRectanglePart(curveHeight: curveHeight, radiusOfBaseCircle: radiusOfBaseCircle, countOfParts: countOfTabs)

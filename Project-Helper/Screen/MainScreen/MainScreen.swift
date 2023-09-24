@@ -81,23 +81,9 @@ enum MainScreenTabViewTabSymbol: Int, TabViewTabSymbol {
     }
 }
 
-
-struct TestTab: View {
-    var str: String
-    
-    var body: some View {
-        Text("str")
-            .padding(10)
-            .background(
-                RoundedRectangle(cornerRadius: 5)
-                    .fill(.cc_white1)
-            )
-    }
-}
-
-
-
 struct MainScreen: View  {
+    
+    var tabs: [MainScreenTabViewTabSymbol : AnyView]
     
     @State private var selectedIndexOfTabItem = 0
     
@@ -109,10 +95,14 @@ struct MainScreen: View  {
             Color.idleBackground
                 .ignoresSafeArea()
             ZStack {
-                
-                Rectangle()
-                    .fill(.cc_white2)
-                    .padding(.bottom, heightOfTabBar-curveHeightOfTabBar)
+                //보열질 탭뷰
+                if let tab = tabs[MainScreenTabViewTabSymbol[selectedIndexOfTabItem]] {
+                    tab
+                        .padding(.bottom, heightOfTabBar-curveHeightOfTabBar)
+                }
+                else {
+                    EmptyView()
+                }
                 
                 VStack(spacing: 0) {
                     
@@ -141,20 +131,17 @@ struct MainScreen: View  {
 fileprivate struct TestView: View {
     var body: some View {
         
-//        let tabs: [MainScreenTabViewTabSymbol : AnyView] = [
-//            .projects : AnyView(Rectangle().foregroundColor(.red)),
-//            .calendar : AnyView(Rectangle().foregroundColor(.blue)),
-//            .users : AnyView(Rectangle().foregroundColor(.yellow)),
-//            .setting : AnyView(Rectangle().foregroundColor(.purple)),
-//        ]
-//
+        let tabs: [MainScreenTabViewTabSymbol : AnyView] = [
+            .projects : AnyView(Rectangle().foregroundColor(.red)),
+            .calendar : AnyView(Rectangle().foregroundColor(.blue)),
+            .users : AnyView(Rectangle().foregroundColor(.yellow)),
+            .setting : AnyView(Rectangle().foregroundColor(.purple)),
+        ]
+
         
-        MainScreen()
+        MainScreen(tabs: tabs)
     }
 }
-
-
-
 
 struct MainScreen_Previews: PreviewProvider {
     static var previews: some View {
